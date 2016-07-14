@@ -71,7 +71,6 @@
 	</body>
 
 	<script>
-	console.log({{ vals }})
 
 	function datafold(json) {
 		var return_data = json.data.map(function(data) {
@@ -143,6 +142,9 @@
     .size("value")
     .type("radar")
     .draw();
+
+
+    console.log(json.dumps(vals))
     
 	</script>
 
