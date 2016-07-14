@@ -37,6 +37,9 @@
       margin-bottom: 40px;
       z-index: 900;
     }
+    questions {
+
+    }
     </style>
   </head>
   <body>
@@ -59,14 +62,35 @@
 
             <form method='POST'>
               {{ form.hidden_tag() }}
-              <p>
+              <table style="width:60%">
+              <tr>
+                <td>Reading Comprehension</td>
+                <td>{{ form.q1 }} {% for error in form.q1.errors %}[{{ error }}]{% endfor %}</td>
+              </tr>
+              <tr>
+                <td>Active Listening:</td>
+                <td>{{ form.q2 }} {% for error in form.q2.errors %}[{{ error }}]{% endfor %}</td>
+              </tr>
+              <tr>
+                <td>Writing</td>
+                <td>{{ form.q3 }} {% for error in form.q3.errors %}[{{ error }}]{% endfor %}</td>
+              </tr>
+              <tr>
+                <td>Speaking</td>
+                <td>{{ form.q4 }} {% for error in form.q4.errors %}[{{ error }}]{% endfor %}</td>
+              </tr>
+              <tr>
+                <td>Mathematics</td>
+                <td>{{ form.q5 }} {% for error in form.q5.errors %}[{{ error }}]{% endfor %}</td>
+              </tr>
+            </table>
+            <!--><p>
               Reading Comprehension: {{ form.q1 }} {% for error in form.q1.errors %}[{{ error }}]{% endfor %} <br>
               Active Listening: {{ form.q2 }} {% for error in form.q2.errors %}[{{ error }}]{% endfor %} <br>
               Writing: {{ form.q3 }} {% for error in form.q3.errors %}[{{ error }}]{% endfor %} <br>
               Speaking: {{ form.q4 }} {% for error in form.q4.errors %}[{{ error }}]{% endfor %} <br>
               Mathematics: {{ form.q5 }} {% for error in form.q5.errors %}[{{ error }}]{% endfor %} <br>
-
-              </p>
+            </p><-->
               {{ form.submit }}
             </form>
 
