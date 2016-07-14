@@ -51,6 +51,7 @@ def predict(prediction):
     df = pd.merge(df, id_match, left_on='cip', right_on='id')
     df.drop('id', axis=1, inplace=True)
     df = df.sort_values('prob', ascending=False)
+
     return df[0:5]
 
 if __name__ == "__main__":

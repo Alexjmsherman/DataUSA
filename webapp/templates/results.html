@@ -2,17 +2,18 @@
 <html lang="en">
 
 <title></title>
-<h1>Fill out skills 1-10</h1>
+<h1>Results</h1>
 
 
 <ul>
 <li> career, prob</li>
 {% for i in range(0,5) %}
 <li> {{ result[i][2] }} {{ result[i][1] }}</li>
-
 {% endfor %}
 </ul>
 
+<p>{{ vals }}</p>
+<p>{{ skills_data }}</p>
 
 <p>---------------------------------------------------------------------------------------</p>
 
