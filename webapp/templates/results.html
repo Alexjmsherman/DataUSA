@@ -71,6 +71,7 @@
 	</body>
 
 	<script>
+	console.log({{ vals }})
 
 	function datafold(json) {
 		var return_data = json.data.map(function(data) {
@@ -123,23 +124,25 @@
 	d3.select("#iframe_dusa").attr("src", "http://datausa.io/profile/cip/".concat(data[0].SOC));
 	update_plot(data);
 
-	var myViz = d3plus.viz()
-				.container("#res1right")
-                .data(data)
-				.type("bar")
-                .x("score")
-                .y("name")
-				.id("name")
-                .y({scale: "discrete"})
-                .mouse({click: function(obj) {
-                     var cURL = "http://datausa.io/profile/soc/".concat(obj.SOC)
-
-                    console.log("Loading new URL: ", cURL)
-                    d3.select("#iframe_dusa").attr("src", cURL);
-                }})
-                .order("score")
-                .order({sort: "desc"})
-				.draw();
+ var skill_data = [
+    {"name": "Your Skills", "skill": "Reading Comprehension", "value": 4},
+    {"name": "Your Skills", "skill": "Active Listening", "value": 4},
+    {"name": "Your Skills", "skill": "Writing", "value": 4},
+    {"name": "Your Skills", "skill": "Speaking", "value": 4},
+    {"name": "Your Skills", "skill": "Mathematics", "value": 1},
+    {"name": "Job Skills", "skill": "Reading Comprehension", "value": 5},
+    {"name": "Job Skills", "skill": "Active Listening", "value": 1},
+    {"name": "Job Skills", "skill": "Writing", "value": 2},
+    {"name": "Job Skills", "skill": "Speaking", "value": 3},
+    {"name": "Job Skills", "skill": "Mathematics", "value": 5}
+  ];
+  var visualization = d3plus.viz()
+    .container("#res1right")
+    .data(skill_data)
+    .id(["name", "skill"])
+    .size("value")
+    .type("radar")
+    .draw();
     
 	</script>
 
