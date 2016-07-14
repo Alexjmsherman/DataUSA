@@ -65,9 +65,9 @@
 <p>{{ vals }}</p>
 <p>{{ skills_data }}</p>
 
-<p>---------------------------------------------------------------------------------------</p>
 
 	</body>
+
 	<script>
 
 	var data_job = JSON.parse('{{ vals|safe }}' );
@@ -90,7 +90,7 @@
     function update_plot(data) {
 		var myViz = d3plus.viz()
 				.container("#res1left")
-                .data(data_job)
+                .data(data)
 				.type("bar")
                 .x("prob")
                 .y("name_long")
@@ -98,7 +98,6 @@
                 .y({scale: "discrete"})
                 .mouse({click: function(obj) {
                     var cURL = "http://datausa.io/profile/cip/".concat(obj.cip)
-                    console.log(cURL)
                     if(obj.cip == data[0].cip) {
                     	d3.select("#top_job").html(obj.name_long);
                     } else {
@@ -112,32 +111,26 @@
                 .order({sort: "asc"})
 				.draw();
 		return null
-	}  
+	}
+        
+	console.log(data_job)
 
-	var data = [
-		{"SOC": 143701, "score": 0.997,"name": "Operations Research"},
-		{"SOC": 480509, "score": 0.80,"name": "Ironworking"},
-		{"SOC": 120506, "score": 0.5,"name": "Meat Cutting"},
-		{"SOC": 521903, "score": 0.4,"name": "Fashion Modeling"},
-		{"SOC": 480304, "score": 0.3,"name": "Shoe, Boot and Leather Repair"}
-	];
-    
     d3.select("#top_job").html(data_job[0].name_long);
 	d3.select("#iframe_dusa").attr("src", "http://datausa.io/profile/cip/".concat(data_job[0].cip));
 	update_plot(data_job);
 
- var skill_data = [
-    {"name": "Your Skills", "skill": "Reading Comprehension", "value": 4},
-    {"name": "Your Skills", "skill": "Active Listening", "value": 4},
-    {"name": "Your Skills", "skill": "Writing", "value": 4},
-    {"name": "Your Skills", "skill": "Speaking", "value": 4},
-    {"name": "Your Skills", "skill": "Mathematics", "value": 1},
-    {"name": "Job Skills", "skill": "Reading Comprehension", "value": 5},
-    {"name": "Job Skills", "skill": "Active Listening", "value": 1},
-    {"name": "Job Skills", "skill": "Writing", "value": 2},
-    {"name": "Job Skills", "skill": "Speaking", "value": 3},
-    {"name": "Job Skills", "skill": "Mathematics", "value": 5}
-  ];
+ 	var skill_data = [
+    	{"name": "Your Skills", "skill": "Reading Comprehension", "value": parseInt(data_skill[0].user_input)},
+    	{"name": "Your Skills", "skill": "Active Listening", "value":  parseInt(data_skill[1].user_input)},
+    	{"name": "Your Skills", "skill": "Writing", "value":  parseInt(data_skill[2].user_input)},
+    	{"name": "Your Skills", "skill": "Speaking", "value":  parseInt(data_skill[3].user_input)},
+    	{"name": "Your Skills", "skill": "Mathematics", "value":  parseInt(data_skill[4].user_input)},
+    	{"name": "Job Skills", "skill": "Reading Comprehension", "value": 5},
+    	{"name": "Job Skills", "skill": "Active Listening", "value": 1},
+    	{"name": "Job Skills", "skill": "Writing", "value": 2},
+    	{"name": "Job Skills", "skill": "Speaking", "value": 3},
+    	{"name": "Job Skills", "skill": "Mathematics", "value": 5}];
+    	
   var visualization = d3plus.viz()
     .container("#res1right")
     .data(skill_data)

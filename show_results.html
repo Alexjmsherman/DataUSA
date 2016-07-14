@@ -79,7 +79,7 @@
 				.id("name")
                 .y({scale: "discrete"})
                 .mouse({click: function(obj) {
-                    var cURL = "http://datausa.io/profile/cip/".concat(obj.SOC)
+                    var cURL = "http://datausa.io/profile//".concat(obj.SOC)
                     if(obj.SOC == data[0].SOC) {
                     	d3.select("#top_job").html(obj.name);
                     } else {
@@ -97,16 +97,16 @@
         
 
 	var data = [
-		{"SOC": 143701, "score": 0.997,"name": "Operations Research"},
-		{"SOC": 480509, "score": 0.80,"name": "Ironworking"},
-		{"SOC": 120506, "score": 0.5,"name": "Meat Cutting"},
-		{"SOC": 521903, "score": 0.4,"name": "Fashion Modeling"},
-		{"SOC": 480304, "score": 0.3,"name": "Shoe, Boot and Leather Repair"}
+		{"SOC": 272011, "score": 0.997,"name": "Actor", "value": 55},
+		{"SOC": 532010, "score": 0.80,"name": "Commercial Airline Pilot", "value": 25},
+		{"SOC": 291020, "score": 0.5,"name": "Dentist", "value": 20},
+		{"SOC": 252030, "score": 0.4,"name": "Secondary School Teacher", "value": 20},
+		{"SOC": 132051, "score": 0.3,"name": "Financial Analyst", "value": 20}
 
 	];
     
     d3.select("#top_job").html(data[0].name);
-	d3.select("#iframe_dusa").attr("src", "http://datausa.io/profile/cip/".concat(data[0].SOC));
+	d3.select("#iframe_dusa").attr("src", "http://datausa.io/profile/soc/".concat(data[0].SOC));
 	update_plot(data);
 
 	var myViz = d3plus.viz()
