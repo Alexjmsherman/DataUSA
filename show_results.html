@@ -6,6 +6,30 @@
 		<script src="https://d3plus.org/js/d3plus.full.min.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
         <link type="text/css" rel="stylesheet" media="all" href="styles.css" />
+
+        <style>
+			#parent{
+    			overflow:hidden;
+    			position:relative;
+    			display:table;
+    			width:100%;
+    			height:300px;
+			}
+			.left{
+    			width:40%;
+   				display:table-cell;
+			}
+			.right{
+				width:60%;
+    			display:table-cell;
+			}
+
+			body{
+    			margin:0;
+    			padding:0;
+			}
+
+		</style>
 	</head>
 
 	<body>
@@ -13,9 +37,9 @@
        You should be a<br>
             <h1 id="top_job"></h1>
 
-	<div id="res1">
-		<span id="res1left">
-		<span id="res1right">
+	<div id="parent">
+		<div class="left" id="res1left"></div>
+		<div class="right" id="res1right"></div>	
 
 	</div>
         
@@ -73,6 +97,24 @@
     
 	d3.select("#iframe_dusa").attr("src", "http://datausa.io/profile/soc/".concat(data[0].SOC));
 	update_plot(data);
+
+	var myViz = d3plus.viz()
+				.container("#res1right")
+                .data(data)
+				.type("bar")
+                .x("score")
+                .y("name")
+				.id("name")
+                .y({scale: "discrete"})
+                .mouse({click: function(obj) {
+                     var cURL = "http://datausa.io/profile/soc/".concat(obj.SOC)
+
+                    console.log("Loading new URL: ", cURL)
+                    d3.select("#iframe_dusa").attr("src", cURL);
+                }})
+                .order("score")
+                .order({sort: "desc"})
+				.draw();
     
 	</script>
 
