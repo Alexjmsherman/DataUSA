@@ -17,14 +17,18 @@ def predict(prediction):
 
     df = pd.DataFrame(data, columns=headers)
     df.drop('value_rca', axis=1, inplace=True)
-    df.head()
 
     pivot = df.pivot_table(index='cip', columns='skill', values='value')
     pivot = pivot.reset_index()
-    pivot.head()
 
     # X = pivot.drop('cip', axis=1)
-    X = pivot[['2.A.2.b','2.A.2.a']]
+    X = pivot[['2.A.1.a',
+                '2.A.1.b',
+                '2.A.1.c',
+                '2.A.1.d',
+                '2.A.1.e'
+                ]]
+
     y = pivot.cip
 
     from sklearn.neighbors import KNeighborsClassifier
@@ -35,7 +39,6 @@ def predict(prediction):
 
     df = zip(y, pred[0])
     df = pd.DataFrame(df, columns=['cip','prob'])
-    df.head()
 
     # get id to name matches
     r = requests.get(r'http://api.datausa.io/attrs/cip/')
@@ -44,12 +47,10 @@ def predict(prediction):
     data = data_usa['data']
     skill_id_df = pd.DataFrame(data, columns=headers)
     id_match = skill_id_df[['id','name_long']]
-    id_match.head()
 
     df = pd.merge(df, id_match, left_on='cip', right_on='id')
     df.drop('id', axis=1, inplace=True)
-    df.head()
-    df = df.sort('prob', ascending=False)
+    df = df.sort_values('prob', ascending=False)
     return df[0:5]
 
 if __name__ == "__main__":

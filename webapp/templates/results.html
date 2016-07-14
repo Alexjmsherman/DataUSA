@@ -4,9 +4,15 @@
 <title></title>
 <h1>Fill out skills 1-10</h1>
 
-<p>
-skill 1: {{ q1 }}
-</p>
+
+<ul>
+<li> career, prob</li>
+{% for i in range(0,5) %}
+<li> {{ result[i][2] }} {{ result[i][1] }}</li>
+
+{% endfor %}
+</ul>
+
 
 <p>---------------------------------------------------------------------------------------</p>
 
