@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<title></title>
+<h1>Fill out skills 1-10</h1>
+
+<form method='POST'>
+    {{ form.hidden_tag() }}
+    <p>
+    Reading Comprehension: {{ form.q1 }} {% for error in form.q1.errors %}[{{ error }}]{% endfor %} <br>
+    Active Listening: {{ form.q2 }} {% for error in form.q2.errors %}[{{ error }}]{% endfor %} <br>
+    Writing: {{ form.q3 }} {% for error in form.q3.errors %}[{{ error }}]{% endfor %} <br>
+    Speaking: {{ form.q4 }} {% for error in form.q4.errors %}[{{ error }}]{% endfor %} <br>
+    Mathematics: {{ form.q5 }} {% for error in form.q5.errors %}[{{ error }}]{% endfor %} <br>
+
+    </p>
+    {{ form.submit }}
+</form>
+<p>---------------------------------------------------------------------------------------</p>
+
+</html>
+
+
