@@ -22,11 +22,11 @@
     			height:300px;
 			}
 			.left{
-    			width:40%;
+    			width:50%;
    				display:table-cell;
 			}
 			.right{
-				width:60%;
+				width:50%;
     			display:table-cell;
 			}
 
@@ -40,7 +40,7 @@
 
 	<body>
 	<div id="res_text">
-       You should be a(n)<br>
+       You should study<br>
        <h1 id="top_job"></h1>
        </div>
 
@@ -70,8 +70,6 @@
 	}
         
     function update_plot(data) {
-        d3.select("#top_job").html(data[0].name); // update the job name
-         
 		var myViz = d3plus.viz()
 				.container("#res1left")
                 .data(data)
@@ -81,9 +79,14 @@
 				.id("name")
                 .y({scale: "discrete"})
                 .mouse({click: function(obj) {
-                     var cURL = "http://datausa.io/profile/soc/".concat(obj.SOC)
-
-                    console.log("Loading new URL: ", cURL)
+                    var cURL = "http://datausa.io/profile/soc/".concat(obj.SOC)
+                    if(obj.SOC == data[0].SOC) {
+                    	d3.select("#top_job").html(obj.name);
+                    } else {
+                    	var toPrint = "(maybe) ".concat(obj.name)
+						d3.select("#top_job").html(toPrint);
+                    }
+                    
                     d3.select("#iframe_dusa").attr("src", cURL);
                 }})
                 .order("score")
@@ -102,6 +105,7 @@
 
 	];
     
+    d3.select("#top_job").html(data[0].name);
 	d3.select("#iframe_dusa").attr("src", "http://datausa.io/profile/soc/".concat(data[0].SOC));
 	update_plot(data);
 
