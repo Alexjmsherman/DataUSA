@@ -43,10 +43,10 @@ def index():
                 vals.append(val)
 
             skills_data = [{'skill':'Reading Comprehension','cip':'2.A.1.a','user_input':q1},
-                            {'skill':'Active Listening','cip':'2.A.1.b','user_input':q1},
-                            {'skill':'Writing','cip':'2.A.1.c','user_input':q1},
-                            {'skill':'Speaking','cip':'2.A.1.d','user_input':q1},
-                            {'skill':'Mathematics','cip':'2.A.1.e','user_input':q1}]
+                            {'skill':'Active Listening','cip':'2.A.1.b','user_input':q2},
+                            {'skill':'Writing','cip':'2.A.1.c','user_input':q3},
+                            {'skill':'Speaking','cip':'2.A.1.d','user_input':q4},
+                            {'skill':'Mathematics','cip':'2.A.1.e','user_input':q5}]
 
             return render_template('results.html', result=result, vals=json.dumps(vals), skills_data=json.dumps(skills_data))
 
