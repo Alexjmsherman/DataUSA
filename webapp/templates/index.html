@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<title>Proposal Miner</title>
+<h1>Fill out skills 1-10</h1>
+
+<form method='POST'>
+    {{ form.hidden_tag() }}
+    <p>
+    skill1: {{form.q1}} {% for error in form.q1.errors %}[{{ error }}]{% endfor %}
+    <br>
+    skill2: {{form.q2}} {% for error in form.q2.errors %}[{{ error }}]{% endfor %}
+    </p>
+    {{ form.submit }}
+</form>
+<p>---------------------------------------------------------------------------------------</p>
+
+</html>
+
+
