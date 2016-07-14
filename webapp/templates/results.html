@@ -1,9 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
+	<head>
+		<title>Your Results</title>
+		<!-- load in JS file , full min includes d3 for us -->
+		<script src="https://d3plus.org/js/d3plus.full.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
+        <link type="text/css" rel="stylesheet" media="all" href="styles.css" />
 
-<title></title>
-<h1>Results</h1>
+        <style>
+        	#res_text{
+        		text-align: center;
+        		font-size: 26pt;
 
+        	}
+			#parent{
+        		text-align: center;
+    			overflow:hidden;
+    			position:relative;
+    			display:table;
+    			width:100%;
+    			height:300px;
+			}
+			.left{
+    			width:50%;
+   				display:table-cell;
+			}
+			.right{
+				width:50%;
+    			display:table-cell;
+			}
+
+			body{
+    			margin:0;
+    			padding:0;
+			}
+
+		</style>
+	</head>
+
+	<body>
+	<div id="res_text">
+       You should study<br>
+       <h1 id="top_job"></h1>
+       </div>
+
+	<div id="parent">
+		<div class="left" id="res1left">Top 5 Occupations</div>
+		<div class="right" id="res1right">Your Skills</div>	
+
+	</div>
+        
+    <h2>Check out more at <a href="http://datausa.io">DataUSA</a> </h2>
+    <div id="res2">
+        <iframe id="iframe_dusa" width="100%" height = "600px" frameborder="0"></iframe></div>
+        
 
 <ul>
 <li> career, prob</li>
@@ -17,6 +67,82 @@
 
 <p>---------------------------------------------------------------------------------------</p>
 
-</html>
 
+	</body>
+
+	<script>
+
+	function datafold(json) {
+		var return_data = json.data.map(function(data) {
+			return json.headers.reduce(function(obj, header, i) {
+				obj[header] = data[i];
+				return obj;
+			}, {});
+		});
+		console.log(return_data)
+		return return_data
+	}
+        
+    function update_plot(data) {
+		var myViz = d3plus.viz()
+				.container("#res1left")
+                .data(data)
+				.type("bar")
+                .x("score")
+                .y("name")
+				.id("name")
+                .y({scale: "discrete"})
+                .mouse({click: function(obj) {
+                    var cURL = "http://datausa.io/profile/cip/".concat(obj.SOC)
+                    if(obj.SOC == data[0].SOC) {
+                    	d3.select("#top_job").html(obj.name);
+                    } else {
+                    	var toPrint = "(maybe) ".concat(obj.name)
+						d3.select("#top_job").html(toPrint);
+                    }
+                    
+                    d3.select("#iframe_dusa").attr("src", cURL);
+                }})
+                .order("score")
+                .order({sort: "asc"})
+				.draw();
+		return null
+	}
+        
+
+	var data = [
+		{"SOC": 143701, "score": 0.997,"name": "Operations Research"},
+		{"SOC": 480509, "score": 0.80,"name": "Ironworking"},
+		{"SOC": 120506, "score": 0.5,"name": "Meat Cutting"},
+		{"SOC": 521903, "score": 0.4,"name": "Fashion Modeling"},
+		{"SOC": 480304, "score": 0.3,"name": "Shoe, Boot and Leather Repair"}
+
+	];
+    
+    d3.select("#top_job").html(data[0].name);
+	d3.select("#iframe_dusa").attr("src", "http://datausa.io/profile/cip/".concat(data[0].SOC));
+	update_plot(data);
+
+	var myViz = d3plus.viz()
+				.container("#res1right")
+                .data(data)
+				.type("bar")
+                .x("score")
+                .y("name")
+				.id("name")
+                .y({scale: "discrete"})
+                .mouse({click: function(obj) {
+                     var cURL = "http://datausa.io/profile/soc/".concat(obj.SOC)
+
+                    console.log("Loading new URL: ", cURL)
+                    d3.select("#iframe_dusa").attr("src", cURL);
+                }})
+                .order("score")
+                .order({sort: "desc"})
+				.draw();
+    
+	</script>
+
+
+</html>
 
