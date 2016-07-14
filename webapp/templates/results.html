@@ -5,7 +5,7 @@
 		<!-- load in JS file , full min includes d3 for us -->
 		<script src="https://d3plus.org/js/d3plus.full.min.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
-        <link type="text/css" rel="stylesheet" media="all" href="styles.css" />
+        <link type="text/css" rel="stylesheet" media="all" href="/static/css/styles.css" />
 
         <style>
         	#res_text{
@@ -40,7 +40,7 @@
 
 	<body>
 	<div id="res_text">
-       You should study<br>
+       You should study/be<br>
        <h1 id="top_job"></h1>
        </div>
 
@@ -125,11 +125,11 @@
     	{"name": "Your Skills", "skill": "Writing", "value":  parseInt(data_skill[2].user_input)},
     	{"name": "Your Skills", "skill": "Speaking", "value":  parseInt(data_skill[3].user_input)},
     	{"name": "Your Skills", "skill": "Mathematics", "value":  parseInt(data_skill[4].user_input)},
-    	{"name": "Job Skills", "skill": "Reading Comprehension", "value": 5},
-    	{"name": "Job Skills", "skill": "Active Listening", "value": 1},
-    	{"name": "Job Skills", "skill": "Writing", "value": 2},
-    	{"name": "Job Skills", "skill": "Speaking", "value": 3},
-    	{"name": "Job Skills", "skill": "Mathematics", "value": 5}];
+    	{"name": "Job Skills", "skill": "Reading Comprehension", "value": 2.3},
+    	{"name": "Job Skills", "skill": "Active Listening", "value": 1.4},
+    	{"name": "Job Skills", "skill": "Writing", "value": 1.9},
+    	{"name": "Job Skills", "skill": "Speaking", "value": 1.1},
+    	{"name": "Job Skills", "skill": "Mathematics", "value": 3.6}];
     	
   var visualization = d3plus.viz()
     .container("#res1right")

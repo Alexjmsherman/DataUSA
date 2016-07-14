@@ -94,16 +94,6 @@
 				.draw();
 		return null
 	}
-        
-
-	var data = [
-		{"SOC": 272011, "score": 0.997,"name": "Actor", "value": 55},
-		{"SOC": 532010, "score": 0.80,"name": "Commercial Airline Pilot", "value": 25},
-		{"SOC": 291020, "score": 0.5,"name": "Dentist", "value": 20},
-		{"SOC": 252030, "score": 0.4,"name": "Secondary School Teacher", "value": 20},
-		{"SOC": 132051, "score": 0.3,"name": "Financial Analyst", "value": 20}
-
-	];
     
     d3.select("#top_job").html(data[0].name);
 	d3.select("#iframe_dusa").attr("src", "http://datausa.io/profile/soc/".concat(data[0].SOC));
