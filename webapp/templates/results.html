@@ -67,10 +67,14 @@
 
 <p>---------------------------------------------------------------------------------------</p>
 
-
 	</body>
-
 	<script>
+
+	var data_job = JSON.parse('{{ vals|safe }}' );
+    console.log(data_job);
+
+    var data_skill = JSON.parse('{{ skills_data|safe }}' );
+    console.log(data_skill);
 
 	function datafold(json) {
 		var return_data = json.data.map(function(data) {
@@ -86,29 +90,29 @@
     function update_plot(data) {
 		var myViz = d3plus.viz()
 				.container("#res1left")
-                .data(data)
+                .data(data_job)
 				.type("bar")
-                .x("score")
-                .y("name")
-				.id("name")
+                .x("prob")
+                .y("name_long")
+				.id("name_long")
                 .y({scale: "discrete"})
                 .mouse({click: function(obj) {
-                    var cURL = "http://datausa.io/profile/cip/".concat(obj.SOC)
-                    if(obj.SOC == data[0].SOC) {
-                    	d3.select("#top_job").html(obj.name);
+                    var cURL = "http://datausa.io/profile/cip/".concat(obj.cip)
+                    console.log(cURL)
+                    if(obj.cip == data[0].cip) {
+                    	d3.select("#top_job").html(obj.name_long);
                     } else {
-                    	var toPrint = "(maybe) ".concat(obj.name)
+                    	var toPrint = "(maybe) ".concat(obj.name_long)
 						d3.select("#top_job").html(toPrint);
                     }
                     
                     d3.select("#iframe_dusa").attr("src", cURL);
                 }})
-                .order("score")
+                .order("prob")
                 .order({sort: "asc"})
 				.draw();
 		return null
-	}
-        
+	}  
 
 	var data = [
 		{"SOC": 143701, "score": 0.997,"name": "Operations Research"},
@@ -116,12 +120,11 @@
 		{"SOC": 120506, "score": 0.5,"name": "Meat Cutting"},
 		{"SOC": 521903, "score": 0.4,"name": "Fashion Modeling"},
 		{"SOC": 480304, "score": 0.3,"name": "Shoe, Boot and Leather Repair"}
-
 	];
     
-    d3.select("#top_job").html(data[0].name);
-	d3.select("#iframe_dusa").attr("src", "http://datausa.io/profile/cip/".concat(data[0].SOC));
-	update_plot(data);
+    d3.select("#top_job").html(data_job[0].name_long);
+	d3.select("#iframe_dusa").attr("src", "http://datausa.io/profile/cip/".concat(data_job[0].cip));
+	update_plot(data_job);
 
  var skill_data = [
     {"name": "Your Skills", "skill": "Reading Comprehension", "value": 4},
@@ -142,9 +145,6 @@
     .size("value")
     .type("radar")
     .draw();
-
-
-    console.log(json.dumps(vals))
     
 	</script>
 

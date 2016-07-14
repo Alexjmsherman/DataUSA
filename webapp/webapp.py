@@ -5,6 +5,7 @@ from flask_wtf import Form
 from wtforms.fields import SubmitField, StringField
 from wtforms.validators import Required
 import occupation_prediction
+import json
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
@@ -47,7 +48,7 @@ def index():
                             {'skill':'Speaking','cip':'2.A.1.d','user_input':q1},
                             {'skill':'Mathematics','cip':'2.A.1.e','user_input':q1}]
 
-            return render_template('results.html', result=result, vals=vals, skills_data=skills_data)
+            return render_template('results.html', result=result, vals=json.dumps(vals), skills_data=json.dumps(skills_data))
 
     return render_template('index.html', form=form)
 
