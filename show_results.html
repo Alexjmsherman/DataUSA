@@ -13,11 +13,15 @@
        You should be a<br>
             <h1 id="top_job"></h1>
 
-	<div id="res1"></div>
+	<div id="res1">
+		<span id="res1left">
+		<span id="res1right">
+
+	</div>
         
     <h2>Check out more at <a href="http://datausa.io">DataUSA</a> </h2>
     <div id="res2">
-        <iframe id="iframe_dusa" width="100%" height = "600px" border="0"></iframe></div>
+        <iframe id="iframe_dusa" width="100%" height = "600px" frameborder="0"></iframe></div>
 
 	</body>
 
@@ -38,7 +42,7 @@
         d3.select("#top_job").html(data[0].name); // update the job name
          
 		var myViz = d3plus.viz()
-				.container("#res1")
+				.container("#res1left")
                 .data(data)
 				.type("bar")
                 .x("score")
@@ -67,7 +71,7 @@
 
 	];
     
-
+	d3.select("#iframe_dusa").attr("src", "http://datausa.io/profile/soc/".concat(data[0].SOC));
 	update_plot(data);
     
 	</script>
