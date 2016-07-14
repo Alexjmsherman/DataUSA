@@ -36,7 +36,18 @@ def index():
             _result = occupation_prediction.predict(prediction=prediction_data)
             result = _result.values
 
-            return render_template('results.html', result=result)
+            vals=[]
+            for ind, row in _result.iterrows():
+                val = {'cip':row[0] , 'prob':row[1], 'name_long':row[2]}
+                vals.append(val)
+
+            skills_data = [{'skill':'Reading Comprehension','cip':'2.A.1.a','user_input':q1},
+                            {'skill':'Active Listening','cip':'2.A.1.b','user_input':q1},
+                            {'skill':'Writing','cip':'2.A.1.c','user_input':q1},
+                            {'skill':'Speaking','cip':'2.A.1.d','user_input':q1},
+                            {'skill':'Mathematics','cip':'2.A.1.e','user_input':q1}]
+
+            return render_template('results.html', result=result, vals=vals, skills_data=skills_data)
 
     return render_template('index.html', form=form)
 
