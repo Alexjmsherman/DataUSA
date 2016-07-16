@@ -7,9 +7,15 @@ Created on Thu Jul 14 09:30:31 2016
 
 import requests
 import pandas as pd
+from sklearn.neighbors import KNeighborsClassifier
 
 
-class predictive_models:
+class PredictiveModels:
+    """ creates a classification model using data from the DataUSA api to predict a college major based on an
+    individuals personal ranking of ~30 of their own skills.
+
+    Notes: There are ~1700 college majors with a single instance of each.
+    """
 
     def __init__(self):
         self.cip_names_and_ids = self.get_cip_names_and_ids()
@@ -17,23 +23,35 @@ class predictive_models:
         self.model = self.build_model()
 
     def predict(self, prediction):
+        """ predict which college majors match a users skillset
+
+        :param prediction: a list of users self-rated scores for all required skills
+
+        :return: a dataframe of cips, college majors, and probabilities sorted acsending by  top probability matches
+        """
+
         pred = self.model.predict_proba([prediction])
 
         skill_names = self.cip_names_and_ids['id']
         df = zip(skill_names, pred[0])
         df = pd.DataFrame(df, columns=['cip','prob'])
-        df = df.sort_values('prob', ascending=False)
 
+        # merge results set with cip_names_and_ids to get full text names for the college majors
         df = pd.merge(df, self.cip_names_and_ids, left_on='cip', right_on='id')
-
         df.drop('id', axis=1, inplace=True)
 
+        df.sort_values('prob', ascending=False, inplace=True)
 
         print df[0:5]
         return df[0:5]
 
     @staticmethod
     def build_model():
+        """ request cip and skill data from DataUSA and develop predictive model using scikit-learn
+
+        :return: fit model ready to accept user input to make a prediction
+        """
+
         # request data on college majors and relevant skills
         r = requests.get(r'http://api.datausa.io/api/?show=skill&sumlevel=all')
         data_usa = r.json()
@@ -44,15 +62,17 @@ class predictive_models:
         df = pd.DataFrame(data, columns=headers)
         df.drop('value_rca', axis=1, inplace=True)
 
+        # reshape data so that each skill becomes a single column (i.e. feature for the model)
         pivot = df.pivot_table(index='cip', columns='skill', values='value')
         pivot = pivot.reset_index()
+
+        print pivot.head()
 
         # todo: use all skills - first five for testing
         X = pivot[['2.A.1.a', '2.A.1.b', '2.A.1.c', '2.A.1.d', '2.A.1.e']]
         # X = pivot.drop('cip', axis=1)  # feature matrix
         y = pivot.cip  # response
 
-        from sklearn.neighbors import KNeighborsClassifier
         knn = KNeighborsClassifier(n_neighbors=5)
         knn.fit(X, y)
 
@@ -60,21 +80,30 @@ class predictive_models:
 
     @staticmethod
     def get_cip_names_and_ids():
-        # get id to name matches
-        r = requests.get(r'http://api.datausa.io/attrs/cip/')
+        """ request the full listing of cip (college major) ids and full text names from the DataUSA api
+
+        :return: full listing of cip (college major) ids and full text names
+        """
+
+        r = requests.get(r'http://api.datausa.io/attrs/cip/')  # get id to name matches
         cip_course_data = r.json()
 
         cip_headers = cip_course_data['headers']
         cip_data = cip_course_data['data']
 
-        skill_id_df = pd.DataFrame(cip_data, columns=cip_headers)
-        cip_names_and_ids = skill_id_df[['id','name_long']]
+        cip_id_df = pd.DataFrame(cip_data, columns=cip_headers)
+        cip_names_and_ids = cip_id_df[['id','name_long']]
 
         return cip_names_and_ids
 
     @staticmethod
     def get_skill_names_and_ids():
-        r = requests.get(r'http://api.datausa.io/attrs/skill/')
+        """ request the full listing of skill ids and full text names from the DataUSA api
+
+        :return: full listing of cip (college major) ids and full text names
+        """
+
+        r = requests.get(r'http://api.datausa.io/attrs/skill/')  # get id to name matches
         skill_data = r.json()
 
         headers = skill_data['headers']
@@ -87,6 +116,6 @@ class predictive_models:
 
 
 if __name__ == "__main__":
-    p = predictive_models()
-    g = [1. for n in range(0,5)]
+    p = PredictiveModels()
+    g = [1. for i in range(0, len(p.skill_names_and_ids))]
     p.predict(g)

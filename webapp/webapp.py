@@ -11,7 +11,7 @@ import json
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
-occupation_prediction = occupation_prediction.predictive_models()
+occupation_prediction = occupation_prediction.PredictiveModels()
 
 class Survey(Form):
     # q1 = StringField('q1', validators=[Required()])
