@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+function outputUpdate(age) {
+    document.querySelector('#selected-age').value = age;
+}
+</script>
+</head>
+
+<body>
+
+<form>
+    <p>
+       {{ form.age.label }}:
+       {{ form.age(min=1, max=5, oninput="outputUpdate(value)") }}
+       <output for="age" id="selected-age">{{ form.age.data }}</output>
+    </p>
+</form>
+
+</body>
+</html>

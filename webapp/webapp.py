@@ -3,20 +3,23 @@ __author__ = 'alsherman'
 from flask import Flask, request, render_template
 from flask_wtf import Form
 from wtforms.fields import SubmitField, StringField
-from wtforms.validators import Required
+from wtforms.fields.html5 import IntegerRangeField
+from wtforms.validators import Required, NumberRange
 import occupation_prediction
 import json
 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
-
+occupation_prediction = occupation_prediction.predictive_models()
 
 class Survey(Form):
-    q1 = StringField('q1', validators=[Required()])
-    q2 = StringField('q2', validators=[Required()])
-    q3 = StringField('q3', validators=[Required()])
-    q4 = StringField('q4', validators=[Required()])
-    q5 = StringField('q5', validators=[Required()])
+    # q1 = StringField('q1', validators=[Required()])
+    q1 = IntegerRangeField('q1', default=1, validators=[NumberRange(min=1, max=5)])
+    q2 = IntegerRangeField('q2', default=1, validators=[NumberRange(min=1, max=5)])
+    q3 = IntegerRangeField('q3', default=1, validators=[NumberRange(min=1, max=5)])
+    q4 = IntegerRangeField('q4', default=1, validators=[NumberRange(min=1, max=5)])
+    q5 = IntegerRangeField('q5', default=1, validators=[NumberRange(min=1, max=5)])
 
     submit = SubmitField('Submit')
 
@@ -56,3 +59,15 @@ def index():
 if __name__ == "__main__":
     app.debug = True
     app.run()
+
+
+'''
+
+class TestForm(Form):
+    age = IntegerRangeField('Age', default=1, validators=[NumberRange(min=1, max=5)])
+
+@app.route('/test/',  methods=['GET', 'POST'])
+def test():
+    form = TestForm()
+    return render_template('test.html', form=form)
+'''
