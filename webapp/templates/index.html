@@ -56,7 +56,7 @@
     <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
       <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Major Recommendation Tool</span>
+          <span class="mdl-layout-title"><b>Major Recommendation Tool</b></span>
           <div class="mdl-layout-spacer"></div>
         </div>
       </header>
@@ -74,41 +74,27 @@
               {{ form.hidden_tag() }}
               <table style="width:60%">
               <tr>
-                <td> Question 1: </td>
-                <td>
-                  {{ form.q1(min=1, max=5, oninput="q1Update(value)") }} {% for error in form.q1.errors %}[{{ error }}]{% endfor %}
-                  <output id="select-q1">{{ form.q1.data }}</output>
-                </td>
+                <td>{{ form.q1.label }}</td>
+                <td>{{ form.q1(min=1, max=5, oninput="q1Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q1">{{ form.q1.data }}</output></td>
               </tr>
               <tr>
-                <td>Active Listening: </td>
-                <td>
-                  {{ form.q2(min=1, max=5, oninput="q2Update(value)") }} {% for error in form.q2.errors %}[{{ error }}]{% endfor %}
-                  <output id="select-q2">{{ form.q2.data }}</output>
-                </td>
+                <td>{{ form.q2.label }}</td>
+                <td>{{ form.q2(min=1, max=5, oninput="q2Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q2">{{ form.q2.data }}</output></td>
               </tr>
               <tr>
-                <td>Writing</td>
-                <td>
-                  {{ form.q3(min=1, max=5, oninput="q3Update(value)") }} {% for error in form.q2.errors %}[{{ error }}]{% endfor %}
-                  <output id="select-q3">{{ form.q3.data }}</output>
-                </td>
+                <td>{{ form.q3.label }}</td>
+                <td>{{ form.q3(min=1, max=5, oninput="q3Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q3">{{ form.q3.data }}</output></td>
               </tr>
               <tr>
-                <td>Speaking</td>
-                <td>
-                  {{ form.q4(min=1, max=5, oninput="q4Update(value)") }} {% for error in form.q2.errors %}[{{ error }}]{% endfor %}
-                  <output id="select-q4">{{ form.q4.data }}</output>
-                </td>
+                <td>{{ form.q4.label }}</td>
+                <td>{{ form.q4(min=1, max=5, oninput="q4Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q4">{{ form.q4.data }}</output></td>
               </tr>
               <tr>
-                <td>Mathematics</td>
-                <td>
-                  {{ form.q5(min=1, max=5, oninput="q5Update(value)") }} {% for error in form.q2.errors %}[{{ error }}]{% endfor %}
-                  <output id="select-q5">{{ form.q5.data }}</output>
-                </td>
+                <td>{{ form.q5.label }}</td>
+                <td>{{ form.q5(min=1, max=5, oninput="q5Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q5">{{ form.q5.data }}</output></td>
               </tr>
             </table>
+
               {{ form.submit }}
             </form>
 

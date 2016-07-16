@@ -8,18 +8,19 @@ Created on Thu Jul 14 09:30:31 2016
 import requests
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
+from data_usa_names_and_ids import DataUsaNamesAndIds
 
 
 class PredictiveModels:
     """ creates a classification model using data from the DataUSA api to predict a college major based on an
     individuals personal ranking of ~30 of their own skills.
 
-    Notes: There are ~1700 college majors with a single instance of each.
+    Notes: There are ~2300 college majors with a single instance of each.
     """
 
-    def __init__(self):
-        self.cip_names_and_ids = self.get_cip_names_and_ids()
-        self.skill_names_and_ids = self.get_skill_names_and_ids()
+    def __init__(self, names_and_ids):
+        self.cip_names_and_ids = names_and_ids.cip_names_and_ids
+        self.skill_names_and_ids = names_and_ids.skill_names_and_ids
         self.model = self.build_model()
 
     def predict(self, prediction):
@@ -32,13 +33,10 @@ class PredictiveModels:
 
         pred = self.model.predict_proba([prediction])
 
-        skill_names = self.cip_names_and_ids['id']
-        df = zip(skill_names, pred[0])
-        df = pd.DataFrame(df, columns=['cip','prob'])
-
-        # merge results set with cip_names_and_ids to get full text names for the college majors
-        df = pd.merge(df, self.cip_names_and_ids, left_on='cip', right_on='id')
-        df.drop('id', axis=1, inplace=True)
+        career_ids = self.cip_names_and_ids['id']
+        career_names = self.cip_names_and_ids['name_long']
+        df = zip(career_ids, pred[0], career_names)
+        df = pd.DataFrame(df, columns=['cip', 'prob', 'name_long'])
 
         df.sort_values('prob', ascending=False, inplace=True)
 
@@ -65,8 +63,6 @@ class PredictiveModels:
         # reshape data so that each skill becomes a single column (i.e. feature for the model)
         pivot = df.pivot_table(index='cip', columns='skill', values='value')
         pivot = pivot.reset_index()
-
-        print pivot.head()
 
         # todo: use all skills - first five for testing
         X = pivot[['2.A.1.a', '2.A.1.b', '2.A.1.c', '2.A.1.d', '2.A.1.e']]
@@ -116,6 +112,7 @@ class PredictiveModels:
 
 
 if __name__ == "__main__":
-    p = PredictiveModels()
+    names_and_ids = DataUsaNamesAndIds()
+    p = PredictiveModels(names_and_ids)
     g = [1. for i in range(0, len(p.skill_names_and_ids))]
     p.predict(g)

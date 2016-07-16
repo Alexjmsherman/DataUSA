@@ -5,21 +5,54 @@ from flask_wtf import Form
 from wtforms.fields import SubmitField, StringField
 from wtforms.fields.html5 import IntegerRangeField
 from wtforms.validators import Required, NumberRange
-import occupation_prediction
+from occupation_prediction import PredictiveModels
+from data_usa_names_and_ids import DataUsaNamesAndIds
 import json
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
-occupation_prediction = occupation_prediction.PredictiveModels()
+names_and_ids = DataUsaNamesAndIds()
+occupation_prediction = PredictiveModels(names_and_ids)
+
 
 class Survey(Form):
-    # q1 = StringField('q1', validators=[Required()])
-    q1 = IntegerRangeField('q1', default=1, validators=[NumberRange(min=1, max=5)])
-    q2 = IntegerRangeField('q2', default=1, validators=[NumberRange(min=1, max=5)])
-    q3 = IntegerRangeField('q3', default=1, validators=[NumberRange(min=1, max=5)])
-    q4 = IntegerRangeField('q4', default=1, validators=[NumberRange(min=1, max=5)])
-    q5 = IntegerRangeField('q5', default=1, validators=[NumberRange(min=1, max=5)])
+    """ Survey questions including all skills for a user to provide personal ratings  """
+    q0 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][0], default=1, validators=[NumberRange(min=1, max=5)])
+    q1 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][1], default=1, validators=[NumberRange(min=1, max=5)])
+    q2 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][2], default=1, validators=[NumberRange(min=1, max=5)])
+    q3 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][3], default=1, validators=[NumberRange(min=1, max=5)])
+    q4 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][4], default=1, validators=[NumberRange(min=1, max=5)])
+    q5 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][5], default=1, validators=[NumberRange(min=1, max=5)])
+    q6 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][6], default=1, validators=[NumberRange(min=1, max=5)])
+    q7 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][7], default=1, validators=[NumberRange(min=1, max=5)])
+    q8 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][8], default=1, validators=[NumberRange(min=1, max=5)])
+    q9 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][9], default=1, validators=[NumberRange(min=1, max=5)])
+    q10 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][10], default=1, validators=[NumberRange(min=1, max=5)])
+    q11 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][11], default=1, validators=[NumberRange(min=1, max=5)])
+    q12 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][12], default=1, validators=[NumberRange(min=1, max=5)])
+    q13 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][13], default=1, validators=[NumberRange(min=1, max=5)])
+    q14 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][14], default=1, validators=[NumberRange(min=1, max=5)])
+    q15 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][15], default=1, validators=[NumberRange(min=1, max=5)])
+    q16 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][16], default=1, validators=[NumberRange(min=1, max=5)])
+    q17 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][17], default=1, validators=[NumberRange(min=1, max=5)])
+    q18 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][18], default=1, validators=[NumberRange(min=1, max=5)])
+    q19 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][19], default=1, validators=[NumberRange(min=1, max=5)])
+    q20 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][20], default=1, validators=[NumberRange(min=1, max=5)])
+    q21 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][21], default=1, validators=[NumberRange(min=1, max=5)])
+    q22 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][22], default=1, validators=[NumberRange(min=1, max=5)])
+    q23 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][23], default=1, validators=[NumberRange(min=1, max=5)])
+    q24 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][24], default=1, validators=[NumberRange(min=1, max=5)])
+    q25 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][25], default=1, validators=[NumberRange(min=1, max=5)])
+    q26 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][26], default=1, validators=[NumberRange(min=1, max=5)])
+    q27 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][27], default=1, validators=[NumberRange(min=1, max=5)])
+    q28 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][28], default=1, validators=[NumberRange(min=1, max=5)])
+    q29 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][29], default=1, validators=[NumberRange(min=1, max=5)])
+    q30 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][30], default=1, validators=[NumberRange(min=1, max=5)])
+    q31 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][31], default=1, validators=[NumberRange(min=1, max=5)])
+    q32 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][32], default=1, validators=[NumberRange(min=1, max=5)])
+    q33 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][33], default=1, validators=[NumberRange(min=1, max=5)])
+    q34 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][34], default=1, validators=[NumberRange(min=1, max=5)])
 
     submit = SubmitField('Submit')
 
@@ -59,15 +92,3 @@ def index():
 if __name__ == "__main__":
     app.debug = True
     app.run()
-
-
-'''
-
-class TestForm(Form):
-    age = IntegerRangeField('Age', default=1, validators=[NumberRange(min=1, max=5)])
-
-@app.route('/test/',  methods=['GET', 'POST'])
-def test():
-    form = TestForm()
-    return render_template('test.html', form=form)
-'''
