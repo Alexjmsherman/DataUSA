@@ -73,16 +73,19 @@ def index():
             _result = occupation_prediction.predict(prediction=prediction_data)
             result = _result.values
 
-            vals=[]
+            vals = []
             for ind, row in _result.iterrows():
                 val = {'cip':row[0] , 'prob':row[1], 'name_long':row[2]}
                 vals.append(val)
 
-            skills_data = [{'skill':'Reading Comprehension','cip':'2.A.1.a','user_input':q1},
-                            {'skill':'Active Listening','cip':'2.A.1.b','user_input':q2},
-                            {'skill':'Writing','cip':'2.A.1.c','user_input':q3},
-                            {'skill':'Speaking','cip':'2.A.1.d','user_input':q4},
-                            {'skill':'Mathematics','cip':'2.A.1.e','user_input':q5}]
+            skills_data = []
+            for ind, skill_pred in enumerate(prediction_data):
+                skill = {'skill':names_and_ids.skill_names_and_ids['name'][ind],
+                         'cip':names_and_ids.skill_names_and_ids['id'][ind],
+                         'user_input':skill_pred}
+                skills_data.append(skill)
+
+            print skills_data
 
             return render_template('results.html', result=result, vals=json.dumps(vals), skills_data=json.dumps(skills_data))
 
