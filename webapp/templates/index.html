@@ -12,7 +12,7 @@
 <h1>Fill out skills 1-5</h1>
 >>>>>>> origin/master
 
-      https://www.apache.org/licenses/LICENSE-2.0
+  https://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
@@ -37,9 +37,20 @@
       margin-bottom: 40px;
       z-index: 900;
     }
-    questions {
 
+    table {
+        border-collapse: collapse;
+        width: 100%;
     }
+
+    th, td {
+        padding: 5px;
+        text-align: left;
+        border-bottom: 2px solid #ddd;
+    }
+
+    tr:hover{background-color:#f5f5f5}
+
     </style>
 
     <script>
@@ -95,154 +106,162 @@
           <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
           <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
             <h3>Tell us about yourself</h3>
-            <br>
             <h4>Answer the following questions about skills.</h4>
             <h4>Repsonses range from 0 to 5, with 0 meaning that you have no experience whatsoever and 5 meaning you're a rockstar.</h4>
 
+            <br>
+
             <form method='POST'>
               {{ form.hidden_tag() }}
-              <table style="width:60%">
+
+
+              <table style="width:60%" font-size="20pt">
               <tr>
-                <td>{{ form.q0.label }}</td>
+                <td></td>
+                <td><b>1</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>2</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>3</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>4</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>5</b></td>
+              </tr>
+              <tr>
+                <td><font size="4">{{ form.q0.label }}</font></td>
                 <td>{{ form.q0(min=1, max=5, oninput="q0Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q0">{{ form.q0.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q1.label }}</td>
+                <td><font size="4">{{ form.q1.label }}</font></td>
                 <td>{{ form.q1(min=1, max=5, oninput="q1Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q1">{{ form.q1.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q2.label }}</td>
+                <td><font size="4">{{ form.q2.label }}</font></td>
                 <td>{{ form.q2(min=1, max=5, oninput="q2Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q2">{{ form.q2.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q3.label }}</td>
+                <td><font size="4">{{ form.q3.label }}</font></td>
                 <td>{{ form.q3(min=1, max=5, oninput="q3Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q3">{{ form.q3.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q4.label }}</td>
+                <td><font size="4">{{ form.q4.label }}</font></td>
                 <td>{{ form.q4(min=1, max=5, oninput="q4Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q4">{{ form.q4.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q5.label }}</td>
+                <td><font size="4">{{ form.q5.label }}</font></td>
                 <td>{{ form.q5(min=1, max=5, oninput="q5Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q5">{{ form.q5.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q6.label }}</td>
+                <td><font size="4">{{ form.q6.label }}</font></td>
                 <td>{{ form.q6(min=1, max=5, oninput="q6Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q6">{{ form.q6.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q7.label }}</td>
+                <td><font size="4">{{ form.q7.label }}</font></td>
                 <td>{{ form.q7(min=1, max=5, oninput="q7Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q7">{{ form.q7.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q8.label }}</td>
+                <td><font size="4">{{ form.q8.label }}</font></td>
                 <td>{{ form.q8(min=1, max=5, oninput="q8Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q8">{{ form.q8.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q9.label }}</td>
+                <td><font size="4">{{ form.q9.label }}</font></td>
                 <td>{{ form.q9(min=1, max=5, oninput="q9Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q9">{{ form.q9.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q10.label }}</td>
+                <td><font size="4">{{ form.q10.label }}</font></td>
                 <td>{{ form.q10(min=1, max=5, oninput="q10Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q10">{{ form.q10.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q11.label }}</td>
+                <td><font size="4">{{ form.q11.label }}</font></td>
                 <td>{{ form.q11(min=1, max=5, oninput="q11Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q11">{{ form.q11.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q12.label }}</td>
+                <td><font size="4">{{ form.q12.label }}</font></td>
                 <td>{{ form.q12(min=1, max=5, oninput="q12Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q12">{{ form.q12.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q13.label }}</td>
+                <td><font size="4">{{ form.q13.label }}</font></td>
                 <td>{{ form.q13(min=1, max=5, oninput="q13Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q13">{{ form.q13.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q14.label }}</td>
+                <td><font size="4">{{ form.q14.label }}</font></td>
                 <td>{{ form.q14(min=1, max=5, oninput="q14Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q14">{{ form.q14.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q15.label }}</td>
+                <td><font size="4">{{ form.q15.label }}</font></td>
                 <td>{{ form.q15(min=1, max=5, oninput="q15Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q15">{{ form.q15.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q16.label }}</td>
+                <td><font size="4">{{ form.q16.label }}</font></td>
                 <td>{{ form.q16(min=1, max=5, oninput="q16Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q16">{{ form.q16.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q17.label }}</td>
+                <td><font size="4">{{ form.q17.label }}</font></td>
                 <td>{{ form.q17(min=1, max=5, oninput="q17Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q17">{{ form.q17.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q18.label }}</td>
+                <td><font size="4">{{ form.q18.label }}</font></td>
                 <td>{{ form.q18(min=1, max=5, oninput="q18Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q18">{{ form.q18.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q19.label }}</td>
+                <td><font size="4">{{ form.q19.label }}</font></td>
                 <td>{{ form.q19(min=1, max=5, oninput="q19Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q19">{{ form.q19.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q20.label }}</td>
+                <td><font size="4">{{ form.q20.label }}</font></td>
                 <td>{{ form.q20(min=1, max=5, oninput="q20Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q20">{{ form.q20.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q21.label }}</td>
+                <td><font size="4">{{ form.q21.label }}</font></td>
                 <td>{{ form.q21(min=1, max=5, oninput="q21Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q21">{{ form.q21.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q22.label }}</td>
+                <td><font size="4">{{ form.q22.label }}</font></td>
                 <td>{{ form.q22(min=1, max=5, oninput="q22Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q22">{{ form.q22.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q23.label }}</td>
+                <td><font size="4">{{ form.q23.label }}</font></td>
                 <td>{{ form.q23(min=1, max=5, oninput="q23Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q23">{{ form.q23.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q24.label }}</td>
+                <td><font size="4">{{ form.q24.label }}</font></td>
                 <td>{{ form.q24(min=1, max=5, oninput="q24Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q24">{{ form.q24.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q25.label }}</td>
+                <td><font size="4">{{ form.q25.label }}</font></td>
                 <td>{{ form.q25(min=1, max=5, oninput="q25Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q25">{{ form.q25.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q26.label }}</td>
+                <td><font size="4">{{ form.q26.label }}</font></td>
                 <td>{{ form.q26(min=1, max=5, oninput="q26Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q26">{{ form.q26.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q27.label }}</td>
+                <td><font size="4">{{ form.q27.label }}</font></td>
                 <td>{{ form.q27(min=1, max=5, oninput="q27Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q27">{{ form.q27.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q28.label }}</td>
+                <td><font size="4">{{ form.q28.label }}</font></td>
                 <td>{{ form.q28(min=1, max=5, oninput="q28Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q28">{{ form.q28.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q29.label }}</td>
+                <td><font size="4">{{ form.q29.label }}</font></td>
                 <td>{{ form.q29(min=1, max=5, oninput="q29Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q29">{{ form.q29.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q30.label }}</td>
+                <td><font size="4">{{ form.q30.label }}</font></td>
                 <td>{{ form.q30(min=1, max=5, oninput="q30Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q30">{{ form.q30.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q31.label }}</td>
+                <td><font size="4">{{ form.q31.label }}</font></td>
                 <td>{{ form.q31(min=1, max=5, oninput="q31Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q31">{{ form.q31.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q32.label }}</td>
+                <td><font size="4">{{ form.q32.label }}</font></td>
                 <td>{{ form.q32(min=1, max=5, oninput="q32Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q32">{{ form.q32.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q33.label }}</td>
+                <td><font size="4">{{ form.q33.label }}</font></td>
                 <td>{{ form.q33(min=1, max=5, oninput="q33Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q33">{{ form.q33.data }}</output></td>
               </tr>
               <tr>
-                <td>{{ form.q34.label }}</td>
+                <td><font size="4">{{ form.q34.label }}</font></td>
                 <td>{{ form.q34(min=1, max=5, oninput="q34Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q34">{{ form.q34.data }}</output></td>
               </tr>
             </table>
+              <br>
               {{ form.submit }}
             </form>
 

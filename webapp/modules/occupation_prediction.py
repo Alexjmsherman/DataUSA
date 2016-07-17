@@ -41,7 +41,7 @@ class PredictiveModels:
         df.sort_values('prob', ascending=False, inplace=True)
 
         print df[0:5]
-        return df[0:5]
+        return df[0:20]
 
     @staticmethod
     def build_model():
@@ -65,11 +65,11 @@ class PredictiveModels:
         pivot = pivot.reset_index()
 
         # todo: use all skills - first five for testing
-        X = pivot[['2.A.1.a', '2.A.1.b', '2.A.1.c', '2.A.1.d', '2.A.1.e']]
-        # X = pivot.drop('cip', axis=1)  # feature matrix
+        #X = pivot[['2.A.1.a', '2.A.1.b', '2.A.1.c', '2.A.1.d', '2.A.1.e']]
+        X = pivot.drop('cip', axis=1)  # feature matrix
         y = pivot.cip  # response
 
-        knn = KNeighborsClassifier(n_neighbors=5)
+        knn = KNeighborsClassifier(n_neighbors=20)
         knn.fit(X, y)
 
         return knn
