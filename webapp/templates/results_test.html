@@ -81,7 +81,7 @@
        </div>
 
     <div id="parent">
-        <div class="left" id="res1left">Top 5 Occupations</div>
+        <div class="left" id="res1left"><h5>Top College Major Recommendations</h5></div>
         <div class="right" id="res1right">Your Skills</div>
     </div>
     <br><br><br>
@@ -108,10 +108,8 @@
 <script>
 
 var data_job = JSON.parse('{{ vals|safe }}' );
-console.log(data_job);
 
 var data_skill = JSON.parse('{{ skills_data|safe }}' );
-console.log(data_skill);
 
 function datafold(json) {
     var return_data = json.data.map(function(data) {
@@ -120,7 +118,6 @@ function datafold(json) {
             return obj;
         }, {});
     });
-    console.log(return_data)
     return return_data
 }
 
@@ -130,8 +127,8 @@ function update_plot(data) {
             .data(data)
             .type("bar")
             .x("prob")
-            .y("name_long")
-            .id("name_long")
+            .y("college_major")
+            .id("college_major")
             .y({scale: "discrete"})
             .mouse({click: function(obj) {
                 var cURL = "http://datausa.io/profile/cip/".concat(obj.cip)
@@ -153,6 +150,7 @@ function update_plot(data) {
 d3.select("#top_job").html(data_job[0].name_long);
 d3.select("#iframe_dusa").attr("src", "http://datausa.io/profile/cip/".concat(data_job[0].cip));
 update_plot(data_job);
+
 
 var visualization = d3plus.viz()
 .container("#res1right")

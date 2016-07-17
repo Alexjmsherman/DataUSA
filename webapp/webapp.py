@@ -1,7 +1,8 @@
 __author__ = 'alsherman'
 
 import json
-
+import pandas as pd
+import requests
 from flask import Flask, request, render_template
 from flask_wtf import Form
 from wtforms.fields import SubmitField
@@ -109,7 +110,7 @@ def index():
 
             vals = []
             for ind, row in _result.iterrows():
-                val = {'cip':row[0] , 'prob':row[1], 'name_long':row[2]}
+                val = {'cip':row[0] , 'prob':row[1], 'college_major':row[2]}
                 vals.append(val)
 
             skills_data = []
@@ -121,13 +122,22 @@ def index():
                 skills_data.append(skill)
 
             # todo: run a query to get skills for the top job
-            for ind, skill_pred in enumerate(prediction_data):
-                skill = {'name':'job skills',
-                         'skill':names_and_ids.skill_names_and_ids['name'][ind],
-                         'cip':names_and_ids.skill_names_and_ids['id'][ind],
-                         'user_input':skill_pred + 1}
-                skills_data.append(skill)
+            # request skills data on the top matching job
+            r = requests.get(r'http://api.datausa.io/api/?show=skill&sumlevel=all&cip={}'.format(vals[0]['cip']))
+            data_usa = r.json()
+            headers = data_usa['headers']
+            data = data_usa['data']
+            df = pd.DataFrame(data, columns=headers)
+            df = pd.merge(df, names_and_ids.skill_names_and_ids, left_on='skill', right_on='id')
+            print df.head()
 
+            for ind, row in df.iterrows():
+                print row
+                skill = {'name':'job skills',
+                         'skill':row['name'],
+                         'cip':row['cip'],
+                         'user_input':row['value']}
+                skills_data.append(skill)
 
             return render_template('results_test.html', result=result, vals=json.dumps(vals), skills_data=json.dumps(skills_data))
 

@@ -41,7 +41,7 @@ class PredictiveModels:
         df.sort_values('prob', ascending=False, inplace=True)
 
         print df[0:5]
-        return df[0:20]
+        return df[0:10]
 
     @staticmethod
     def build_model():
