@@ -42,13 +42,42 @@
     }
     </style>
 
-
     <script>
+    function q0Update(response) {document.querySelector('#select-q0').value = response;}
     function q1Update(response) {document.querySelector('#select-q1').value = response;}
     function q2Update(response) {document.querySelector('#select-q2').value = response;}
     function q3Update(response) {document.querySelector('#select-q3').value = response;}
     function q4Update(response) {document.querySelector('#select-q4').value = response;}
     function q5Update(response) {document.querySelector('#select-q5').value = response;}
+    function q6Update(response) {document.querySelector('#select-q6').value = response;}
+    function q7Update(response) {document.querySelector('#select-q7').value = response;}
+    function q8Update(response) {document.querySelector('#select-q8').value = response;}
+    function q9Update(response) {document.querySelector('#select-q9').value = response;}
+    function q10Update(response) {document.querySelector('#select-q10').value = response;}
+    function q11Update(response) {document.querySelector('#select-q11').value = response;}
+    function q12Update(response) {document.querySelector('#select-q12').value = response;}
+    function q13Update(response) {document.querySelector('#select-q13').value = response;}
+    function q14Update(response) {document.querySelector('#select-q14').value = response;}
+    function q15Update(response) {document.querySelector('#select-q15').value = response;}
+    function q16Update(response) {document.querySelector('#select-q16').value = response;}
+    function q17Update(response) {document.querySelector('#select-q17').value = response;}
+    function q18Update(response) {document.querySelector('#select-q18').value = response;}
+    function q19Update(response) {document.querySelector('#select-q19').value = response;}
+    function q20Update(response) {document.querySelector('#select-q20').value = response;}
+    function q21Update(response) {document.querySelector('#select-q21').value = response;}
+    function q22Update(response) {document.querySelector('#select-q22').value = response;}
+    function q23Update(response) {document.querySelector('#select-q23').value = response;}
+    function q24Update(response) {document.querySelector('#select-q24').value = response;}
+    function q25Update(response) {document.querySelector('#select-q25').value = response;}
+    function q26Update(response) {document.querySelector('#select-q26').value = response;}
+    function q27Update(response) {document.querySelector('#select-q27').value = response;}
+    function q28Update(response) {document.querySelector('#select-q28').value = response;}
+    function q29Update(response) {document.querySelector('#select-q29').value = response;}
+    function q30Update(response) {document.querySelector('#select-q30').value = response;}
+    function q31Update(response) {document.querySelector('#select-q31').value = response;}
+    function q32Update(response) {document.querySelector('#select-q32').value = response;}
+    function q33Update(response) {document.querySelector('#select-q33').value = response;}
+    function q34Update(response) {document.querySelector('#select-q34').value = response;}
     </script>
 
   </head>
@@ -74,6 +103,10 @@
               {{ form.hidden_tag() }}
               <table style="width:60%">
               <tr>
+                <td>{{ form.q0.label }}</td>
+                <td>{{ form.q0(min=1, max=5, oninput="q0Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q0">{{ form.q0.data }}</output></td>
+              </tr>
+              <tr>
                 <td>{{ form.q1.label }}</td>
                 <td>{{ form.q1(min=1, max=5, oninput="q1Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q1">{{ form.q1.data }}</output></td>
               </tr>
@@ -93,8 +126,123 @@
                 <td>{{ form.q5.label }}</td>
                 <td>{{ form.q5(min=1, max=5, oninput="q5Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q5">{{ form.q5.data }}</output></td>
               </tr>
+              <tr>
+                <td>{{ form.q6.label }}</td>
+                <td>{{ form.q6(min=1, max=5, oninput="q6Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q6">{{ form.q6.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q7.label }}</td>
+                <td>{{ form.q7(min=1, max=5, oninput="q7Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q7">{{ form.q7.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q8.label }}</td>
+                <td>{{ form.q8(min=1, max=5, oninput="q8Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q8">{{ form.q8.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q9.label }}</td>
+                <td>{{ form.q9(min=1, max=5, oninput="q9Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q9">{{ form.q9.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q10.label }}</td>
+                <td>{{ form.q10(min=1, max=5, oninput="q10Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q10">{{ form.q10.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q11.label }}</td>
+                <td>{{ form.q11(min=1, max=5, oninput="q11Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q11">{{ form.q11.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q12.label }}</td>
+                <td>{{ form.q12(min=1, max=5, oninput="q12Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q12">{{ form.q12.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q13.label }}</td>
+                <td>{{ form.q13(min=1, max=5, oninput="q13Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q13">{{ form.q13.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q14.label }}</td>
+                <td>{{ form.q14(min=1, max=5, oninput="q14Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q14">{{ form.q14.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q15.label }}</td>
+                <td>{{ form.q15(min=1, max=5, oninput="q15Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q15">{{ form.q15.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q16.label }}</td>
+                <td>{{ form.q16(min=1, max=5, oninput="q16Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q16">{{ form.q16.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q17.label }}</td>
+                <td>{{ form.q17(min=1, max=5, oninput="q17Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q17">{{ form.q17.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q18.label }}</td>
+                <td>{{ form.q18(min=1, max=5, oninput="q18Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q18">{{ form.q18.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q19.label }}</td>
+                <td>{{ form.q19(min=1, max=5, oninput="q19Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q19">{{ form.q19.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q20.label }}</td>
+                <td>{{ form.q20(min=1, max=5, oninput="q20Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q20">{{ form.q20.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q21.label }}</td>
+                <td>{{ form.q21(min=1, max=5, oninput="q21Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q21">{{ form.q21.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q22.label }}</td>
+                <td>{{ form.q22(min=1, max=5, oninput="q22Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q22">{{ form.q22.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q23.label }}</td>
+                <td>{{ form.q23(min=1, max=5, oninput="q23Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q23">{{ form.q23.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q24.label }}</td>
+                <td>{{ form.q24(min=1, max=5, oninput="q24Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q24">{{ form.q24.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q25.label }}</td>
+                <td>{{ form.q25(min=1, max=5, oninput="q25Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q25">{{ form.q25.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q26.label }}</td>
+                <td>{{ form.q26(min=1, max=5, oninput="q26Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q26">{{ form.q26.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q27.label }}</td>
+                <td>{{ form.q27(min=1, max=5, oninput="q27Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q27">{{ form.q27.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q28.label }}</td>
+                <td>{{ form.q28(min=1, max=5, oninput="q28Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q28">{{ form.q28.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q29.label }}</td>
+                <td>{{ form.q29(min=1, max=5, oninput="q29Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q29">{{ form.q29.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q30.label }}</td>
+                <td>{{ form.q30(min=1, max=5, oninput="q30Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q30">{{ form.q30.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q31.label }}</td>
+                <td>{{ form.q31(min=1, max=5, oninput="q31Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q31">{{ form.q31.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q32.label }}</td>
+                <td>{{ form.q32(min=1, max=5, oninput="q32Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q32">{{ form.q32.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q33.label }}</td>
+                <td>{{ form.q33(min=1, max=5, oninput="q33Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q33">{{ form.q33.data }}</output></td>
+              </tr>
+              <tr>
+                <td>{{ form.q34.label }}</td>
+                <td>{{ form.q34(min=1, max=5, oninput="q34Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q34">{{ form.q34.data }}</output></td>
+              </tr>
             </table>
-
               {{ form.submit }}
             </form>
 

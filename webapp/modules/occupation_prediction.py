@@ -74,42 +74,6 @@ class PredictiveModels:
 
         return knn
 
-    @staticmethod
-    def get_cip_names_and_ids():
-        """ request the full listing of cip (college major) ids and full text names from the DataUSA api
-
-        :return: full listing of cip (college major) ids and full text names
-        """
-
-        r = requests.get(r'http://api.datausa.io/attrs/cip/')  # get id to name matches
-        cip_course_data = r.json()
-
-        cip_headers = cip_course_data['headers']
-        cip_data = cip_course_data['data']
-
-        cip_id_df = pd.DataFrame(cip_data, columns=cip_headers)
-        cip_names_and_ids = cip_id_df[['id','name_long']]
-
-        return cip_names_and_ids
-
-    @staticmethod
-    def get_skill_names_and_ids():
-        """ request the full listing of skill ids and full text names from the DataUSA api
-
-        :return: full listing of cip (college major) ids and full text names
-        """
-
-        r = requests.get(r'http://api.datausa.io/attrs/skill/')  # get id to name matches
-        skill_data = r.json()
-
-        headers = skill_data['headers']
-        data = skill_data['data']
-
-        skill_id_df = pd.DataFrame(data, columns=headers)
-        skill_names_and_ids = skill_id_df[['id','name']]
-
-        return skill_names_and_ids
-
 
 if __name__ == "__main__":
     names_and_ids = DataUsaNamesAndIds()

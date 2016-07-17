@@ -1,17 +1,18 @@
 __author__ = 'alsherman'
 
+import json
+
 from flask import Flask, request, render_template
 from flask_wtf import Form
-from wtforms.fields import SubmitField, StringField
+from wtforms.fields import SubmitField
 from wtforms.fields.html5 import IntegerRangeField
-from wtforms.validators import Required, NumberRange
-from occupation_prediction import PredictiveModels
-from data_usa_names_and_ids import DataUsaNamesAndIds
-import json
+from wtforms.validators import NumberRange
+from modules.occupation_prediction import PredictiveModels
+from modules.data_usa_names_and_ids import DataUsaNamesAndIds
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret!'
+app.config['SECRET_KEY'] = 'secret'
 names_and_ids = DataUsaNamesAndIds()
 occupation_prediction = PredictiveModels(names_and_ids)
 
@@ -62,13 +63,47 @@ def index():
 
     if request.method == 'POST':
         if form.validate_on_submit():
+            q0 = form.q0.data
             q1 = form.q1.data
             q2 = form.q2.data
             q3 = form.q3.data
             q4 = form.q4.data
             q5 = form.q5.data
+            q6 = form.q6.data
+            q7 = form.q7.data
+            q8 = form.q8.data
+            q9 = form.q9.data
+            q10 = form.q10.data
+            q11 = form.q11.data
+            q12 = form.q12.data
+            q13 = form.q13.data
+            q14 = form.q14.data
+            q15 = form.q15.data
+            q16 = form.q16.data
+            q17 = form.q17.data
+            q18 = form.q18.data
+            q19 = form.q19.data
+            q20 = form.q20.data
+            q21 = form.q21.data
+            q22 = form.q22.data
+            q23 = form.q23.data
+            q24 = form.q24.data
+            q25 = form.q25.data
+            q26 = form.q26.data
+            q27 = form.q27.data
+            q28 = form.q28.data
+            q29 = form.q29.data
+            q30 = form.q30.data
+            q31 = form.q31.data
+            q32 = form.q32.data
+            q33 = form.q33.data
+            q34 = form.q34.data
 
-            prediction_data = [q1,q2,q3,q4,q5]
+            prediction_data = [q0,q1,q2,q3,q4]
+                               # q5, q6,q7,q8,q9,q10,
+                               # q11,q12,q13,q14,q15,q16,q17,q18,q19,q20,
+                               # q21,q22,q23,q24,q25,q26,q27,q28,q29,q30,
+                               # q31,q32,q33,q34]
 
             _result = occupation_prediction.predict(prediction=prediction_data)
             result = _result.values
@@ -84,8 +119,6 @@ def index():
                          'cip':names_and_ids.skill_names_and_ids['id'][ind],
                          'user_input':skill_pred}
                 skills_data.append(skill)
-
-            print skills_data
 
             return render_template('results.html', result=result, vals=json.dumps(vals), skills_data=json.dumps(skills_data))
 

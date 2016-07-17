@@ -36,6 +36,7 @@ class DataUsaNamesAndIds:
         cip_id_df = pd.DataFrame(cip_data, columns=cip_headers)
         cip_names_and_ids = cip_id_df[['id','name_long']]
         cip_names_and_ids = cip_names_and_ids.sort_values(by='id')
+        cip_names_and_ids.reset_index(inplace=True)
 
         return cip_names_and_ids
 
@@ -55,5 +56,6 @@ class DataUsaNamesAndIds:
         skill_id_df = pd.DataFrame(data, columns=headers)
         skill_names_and_ids = skill_id_df[['id','name']]
         skill_names_and_ids = skill_names_and_ids.sort_values(by='id')
+        skill_names_and_ids.reset_index(inplace=True)
 
         return skill_names_and_ids
