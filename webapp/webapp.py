@@ -139,7 +139,7 @@ def index():
                          'user_input':row['value']}
                 skills_data.append(skill)
 
-            return render_template('results_test.html', result=result, vals=json.dumps(vals), skills_data=json.dumps(skills_data))
+            return render_template('results.html', result=result, vals=json.dumps(vals), skills_data=json.dumps(skills_data))
 
     return render_template('index.html', form=form)
 

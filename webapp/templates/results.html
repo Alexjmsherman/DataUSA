@@ -1,132 +1,163 @@
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+=======
+
+  https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
 <!doctype html>
-<html>
-    <head>
-        <title>Your Results</title>
-        <!-- load in JS file , full min includes d3 for us -->
-        <script src="https://d3plus.org/js/d3plus.full.min.js"></script>
-        <link href='https://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
-        <link type="text/css" rel="stylesheet" media="all" href="/static/styles.css" />
+<html lang="en">
+  <head>
+    <title>Your Career Recommendation Results</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.teal-red.min.css">
+    <link rel="stylesheet" href="/static/css/md_styles.css">
 
-        <style>
-            #res_text{
-                text-align: center;
-                font-size: 20pt;
+    <!-- load in JS file , full min includes d3 for us -->
+    <script src="https://d3plus.org/js/d3plus.full.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" media="all" href="/static/styles.css" />
 
-            }
-            #parent{
-                text-align: center;
-                overflow:hidden;
-                position:relative;
-                display:table;
-                width:100%;
-                height:300px;
-            }
-            .left{
-                width:50%;
-                display:table-cell;
-            }
-            .right{
-                width:50%;
-                display:table-cell;
-            }
+      <style>
+        #res_text{
+            text-align: center;
+            font-size: 20pt;
+        }
 
-            body{
-                margin:0;
-                padding:0;
-            }
+        #parent{
+            text-align: center;
+            overflow:hidden;
+            position:relative;
+            display:table;
+            width:100%;
+            height:600px;
+        }
+        .left{
+            width:50%;
+            display:table-cell;
+        }
+        .right{
+            width:50%;
+            display:table-cell;
+        }
 
-        </style>
-    </head>
+        body{
+            margin:0;
+            padding:0;
+        }
+      </style>
 
-    <body>
+  </head>
+
+
+  <body>
+    <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title"><b><a href="{{url_for('index')}}">Fill out the skills survey again</a></b></span>
+          <div class="mdl-layout-spacer"></div>
+        </div>
+      </header>
+      <div class="demo-ribbon"></div>
+      <main class="demo-main mdl-layout__content">
+        <div class="demo-container mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+          <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--12-col">
+
     <div id="res_text">
        You should study<br>
-       <h1 id="top_job"></h1>
+       <h3 id="top_job"></h3>
        </div>
 
     <div id="parent">
-        <div class="left" id="res1left">Top 5 Occupations</div>
+        <div class="left" id="res1left"><h5>Top College Major Recommendations</h5></div>
         <div class="right" id="res1right">Your Skills</div>
+    </div>
+    <br><br><br>
+    <div id="res2">
+        <iframe id="iframe_dusa" width="100%" height = "600px" frameborder="0"></iframe>
+    </div>
+    <h3>Check out more at <a href="http://datausa.io">DataUSA</a> </h3>
 
     </div>
+  </div>
 
-    <h2>Check out more at <a href="http://datausa.io">DataUSA</a> </h2>
-    <div id="res2">
-        <iframe id="iframe_dusa" width="100%" height = "300px" frameborder="0"></iframe></div>
-
-    </body>
-
-    <script>
-    var data_job = JSON.parse('{{ vals|safe }}' );
-    console.log(data_job);
-
-    var data_skill = JSON.parse('{{ skills_data|safe }}' );
-    console.log(data_skill);
-
-    function datafold(json) {
-        var return_data = json.data.map(function(data) {
-            return json.headers.reduce(function(obj, header, i) {
-                obj[header] = data[i];
-                return obj;
-            }, {});
-        });
-        console.log(return_data)
-        return return_data
-    }
-
-    function update_plot(data) {
-        var myViz = d3plus.viz()
-                .container("#res1left")
-                .data(data)
-                .type("bar")
-                .x("prob")
-                .y("name_long")
-                .id("name_long")
-                .y({scale: "discrete"})
-                .mouse({click: function(obj) {
-                    var cURL = "http://datausa.io/profile/cip/".concat(obj.cip)
-                    if(obj.cip == data[0].cip) {
-                        d3.select("#top_job").html(obj.name_long);
-                    } else {
-                        var toPrint = "(maybe) ".concat(obj.name_long)
-                        d3.select("#top_job").html(toPrint);
-                    }
-
-                    d3.select("#iframe_dusa").attr("src", cURL);
-                }})
-                .order("prob")
-                .order({sort: "asc"})
-                .draw();
-        return null
-    }
-
-    console.log(data_job)
-
-    d3.select("#top_job").html(data_job[0].name_long);
-    d3.select("#iframe_dusa").attr("src", "http://datausa.io/profile/cip/".concat(data_job[0].cip));
-    update_plot(data_job);
-
-    var skill_data = [
-        {"name": "Your Skills", "skill": "Reading Comprehension", "value": parseInt(data_skill[0].user_input)},
-        {"name": "Your Skills", "skill": "Active Listening", "value":  parseInt(data_skill[1].user_input)},
-        {"name": "Your Skills", "skill": "Writing", "value":  parseInt(data_skill[2].user_input)},
-        {"name": "Your Skills", "skill": "Speaking", "value":  parseInt(data_skill[3].user_input)},
-        {"name": "Your Skills", "skill": "Mathematics", "value":  parseInt(data_skill[4].user_input)},
-        {"name": "Job Skills", "skill": "Reading Comprehension", "value": 5},
-        {"name": "Job Skills", "skill": "Active Listening", "value": 1},
-        {"name": "Job Skills", "skill": "Writing", "value": 2},
-        {"name": "Job Skills", "skill": "Speaking", "value": 3},
-        {"name": "Job Skills", "skill": "Mathematics", "value": 5}];
-
-  var visualization = d3plus.viz()
-    .container("#res1right")
-    .data(skill_data)
-    .id(["name", "skill"])
-    .size("value")
-    .type("radar")
-    .draw();
-
-    </script>
-
+        <footer class="demo-footer mdl-mini-footer">
+          <div class="mdl-mini-footer--right-section">
+            <a href="https://github.com/Alexjmsherman/DataUSA" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View Source</a>
+            <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </body>
 </html>
 
+
+<script>
+
+var data_job = JSON.parse('{{ vals|safe }}' );
+
+var data_skill = JSON.parse('{{ skills_data|safe }}' );
+
+function datafold(json) {
+    var return_data = json.data.map(function(data) {
+        return json.headers.reduce(function(obj, header, i) {
+            obj[header] = data[i];
+            return obj;
+        }, {});
+    });
+    return return_data
+}
+
+function update_plot(data) {
+    var myViz = d3plus.viz()
+            .container("#res1left")
+            .data(data)
+            .type("bar")
+            .x("prob")
+            .y("college_major")
+            .id("college_major")
+            .y({scale: "discrete"})
+            .mouse({click: function(obj) {
+                var cURL = "http://datausa.io/profile/cip/".concat(obj.cip)
+                if(obj.cip == data[0].cip) {
+                    d3.select("#top_job").html(obj.name_long);
+                } else {
+                    var toPrint = "(maybe) ".concat(obj.name_long)
+                    d3.select("#top_job").html(toPrint);
+                }
+
+                d3.select("#iframe_dusa").attr("src", cURL);
+            }})
+            .order("prob")
+            .order({sort: "asc"})
+            .draw();
+    return null
+}
+
+d3.select("#top_job").html(data_job[0].name_long);
+d3.select("#iframe_dusa").attr("src", "http://datausa.io/profile/cip/".concat(data_job[0].cip));
+update_plot(data_job);
+
+
+var visualization = d3plus.viz()
+.container("#res1right")
+.data(data_skill)
+.id(["name", "skill"])
+.size("user_input")
+.type("radar")
+.draw();
+
+</script>
