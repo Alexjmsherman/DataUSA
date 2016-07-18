@@ -108,7 +108,7 @@
           <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
             <h3>Tell us about yourself</h3>
             <h4>Answer the following questions about skills.</h4>
-            <h4>Repsonses range from 1 to 5, with 1 meaning that you have no experience and 5 meaning you are a rockstar.</h4>
+            <h4>Repsonses range from 1 to 5, with<font color="blue"> 1 meaning that you have no experience and 5 meaning you are a rockstar.</font></h4>
 
             <br>
 
@@ -116,148 +116,184 @@
               {{ form.hidden_tag() }}
 
 
-              <table style="width:60%" font-size="20pt">
+              <table style="width:90%" font-size="20pt">
               <tr>
-                <td></td>
-                <td><b>1</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>2</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>3</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>4</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>5</b></td>
+                <td><font size="4"><b>CATEGORY</b></font></td>
+                <td><font size="4"><b>SKILLS</b></font></td>
+                <td><font size="3" color="blue"><b>1</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>2</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>3</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>4</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>5</b></font></td>
               </tr>
               <tr>
+                <td><font size="4">{{skill_names[0]}}</font></td>
                 <td><font size="4">{{ form.q0.label }}</font></td>
                 <td>{{ form.q0(min=1, max=5, oninput="q0Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q0">{{ form.q0.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[1] != skill_names[0] %}<td><font size="4">{{skill_names[1]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q1.label }}</font></td>
                 <td>{{ form.q1(min=1, max=5, oninput="q1Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q1">{{ form.q1.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[2] != skill_names[1] %}<td><font size="4">{{skill_names[2]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q2.label }}</font></td>
                 <td>{{ form.q2(min=1, max=5, oninput="q2Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q2">{{ form.q2.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[3] != skill_names[2] %}<td><font size="4">{{skill_names[3]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q3.label }}</font></td>
                 <td>{{ form.q3(min=1, max=5, oninput="q3Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q3">{{ form.q3.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[4] != skill_names[3] %}<td><font size="4">{{skill_names[4]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q4.label }}</font></td>
                 <td>{{ form.q4(min=1, max=5, oninput="q4Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q4">{{ form.q4.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[5] != skill_names[4] %}<td><font size="4">{{skill_names[5]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q5.label }}</font></td>
                 <td>{{ form.q5(min=1, max=5, oninput="q5Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q5">{{ form.q5.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[6] != skill_names[5] %}<td><font size="4">{{skill_names[6]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q6.label }}</font></td>
                 <td>{{ form.q6(min=1, max=5, oninput="q6Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q6">{{ form.q6.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[7] != skill_names[6] %}<td><font size="4">{{skill_names[7]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q7.label }}</font></td>
                 <td>{{ form.q7(min=1, max=5, oninput="q7Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q7">{{ form.q7.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[8] != skill_names[7] %}<td><font size="4">{{skill_names[8]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q8.label }}</font></td>
                 <td>{{ form.q8(min=1, max=5, oninput="q8Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q8">{{ form.q8.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[9] != skill_names[8] %}<td><font size="4">{{skill_names[9]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q9.label }}</font></td>
                 <td>{{ form.q9(min=1, max=5, oninput="q9Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q9">{{ form.q9.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[10] != skill_names[9] %}<td><font size="4">{{skill_names[10]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q10.label }}</font></td>
                 <td>{{ form.q10(min=1, max=5, oninput="q10Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q10">{{ form.q10.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[11] != skill_names[10] %}<td><font size="4">{{skill_names[11]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q11.label }}</font></td>
                 <td>{{ form.q11(min=1, max=5, oninput="q11Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q11">{{ form.q11.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[12] != skill_names[11] %}<td><font size="4">{{skill_names[12]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q12.label }}</font></td>
                 <td>{{ form.q12(min=1, max=5, oninput="q12Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q12">{{ form.q12.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[13] != skill_names[12] %}<td><font size="4">{{skill_names[13]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q13.label }}</font></td>
                 <td>{{ form.q13(min=1, max=5, oninput="q13Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q13">{{ form.q13.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[14] != skill_names[13] %}<td><font size="4">{{skill_names[14]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q14.label }}</font></td>
                 <td>{{ form.q14(min=1, max=5, oninput="q14Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q14">{{ form.q14.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[15] != skill_names[14] %}<td><font size="4">{{skill_names[15]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q15.label }}</font></td>
                 <td>{{ form.q15(min=1, max=5, oninput="q15Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q15">{{ form.q15.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[16] != skill_names[15] %}<td><font size="4">{{skill_names[16]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q16.label }}</font></td>
                 <td>{{ form.q16(min=1, max=5, oninput="q16Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q16">{{ form.q16.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[17] != skill_names[16] %}<td><font size="4">{{skill_names[17]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q17.label }}</font></td>
                 <td>{{ form.q17(min=1, max=5, oninput="q17Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q17">{{ form.q17.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[18] != skill_names[17] %}<td><font size="4">{{skill_names[18]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q18.label }}</font></td>
                 <td>{{ form.q18(min=1, max=5, oninput="q18Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q18">{{ form.q18.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[19] != skill_names[18] %}<td><font size="4">{{skill_names[19]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q19.label }}</font></td>
                 <td>{{ form.q19(min=1, max=5, oninput="q19Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q19">{{ form.q19.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[20] != skill_names[19] %}<td><font size="4">{{skill_names[20]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q20.label }}</font></td>
                 <td>{{ form.q20(min=1, max=5, oninput="q20Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q20">{{ form.q20.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[21] != skill_names[20] %}<td><font size="4">{{skill_names[21]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q21.label }}</font></td>
                 <td>{{ form.q21(min=1, max=5, oninput="q21Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q21">{{ form.q21.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[22] != skill_names[21] %}<td><font size="4">{{skill_names[22]}}<font size="4"></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q22.label }}</font></td>
                 <td>{{ form.q22(min=1, max=5, oninput="q22Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q22">{{ form.q22.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[23] != skill_names[22] %}<td><font size="4">{{skill_names[23]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q23.label }}</font></td>
                 <td>{{ form.q23(min=1, max=5, oninput="q23Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q23">{{ form.q23.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[24] != skill_names[23] %}<td><font size="4">{{skill_names[24]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q24.label }}</font></td>
                 <td>{{ form.q24(min=1, max=5, oninput="q24Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q24">{{ form.q24.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[25] != skill_names[24] %}<td><font size="4">{{skill_names[25]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q25.label }}</font></td>
                 <td>{{ form.q25(min=1, max=5, oninput="q25Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q25">{{ form.q25.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[26] != skill_names[25] %}<td><font size="4">{{skill_names[26]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q26.label }}</font></td>
                 <td>{{ form.q26(min=1, max=5, oninput="q26Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q26">{{ form.q26.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[27] != skill_names[26] %}<td><font size="4">{{skill_names[27]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q27.label }}</font></td>
                 <td>{{ form.q27(min=1, max=5, oninput="q27Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q27">{{ form.q27.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[28] != skill_names[27] %}<td><font size="4">{{skill_names[28]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q28.label }}</font></td>
                 <td>{{ form.q28(min=1, max=5, oninput="q28Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q28">{{ form.q28.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[29] != skill_names[28] %}<td><font size="4">{{skill_names[29]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q29.label }}</font></td>
                 <td>{{ form.q29(min=1, max=5, oninput="q29Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q29">{{ form.q29.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[30] != skill_names[29] %}<td><font size="4">{{skill_names[30]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q30.label }}</font></td>
                 <td>{{ form.q30(min=1, max=5, oninput="q30Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q30">{{ form.q30.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[31] != skill_names[30] %}<td><font size="4">{{skill_names[31]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q31.label }}</font></td>
                 <td>{{ form.q31(min=1, max=5, oninput="q31Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q31">{{ form.q31.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[32] != skill_names[31] %}<td><font size="4">{{skill_names[32]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q32.label }}</font></td>
                 <td>{{ form.q32(min=1, max=5, oninput="q32Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q32">{{ form.q32.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[33] != skill_names[32] %}<td><font size="4">{{skill_names[33]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q33.label }}</font></td>
                 <td>{{ form.q33(min=1, max=5, oninput="q33Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q33">{{ form.q33.data }}</output></td>
               </tr>
               <tr>
+                {% if skill_names[34] != skill_names[33] %}<td><font size="4">{{skill_names[34]}}</font></td>{% else %}<td></td>{% endif %}
                 <td><font size="4">{{ form.q34.label }}</font></td>
                 <td>{{ form.q34(min=1, max=5, oninput="q34Update(value)") }}&nbsp;&nbsp;&nbsp;<output id="select-q34">{{ form.q34.data }}</output></td>
               </tr>

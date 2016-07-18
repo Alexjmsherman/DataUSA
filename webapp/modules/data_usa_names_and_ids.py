@@ -54,7 +54,7 @@ class DataUsaNamesAndIds:
         data = skill_data['data']
 
         skill_id_df = pd.DataFrame(data, columns=headers)
-        skill_names_and_ids = skill_id_df[['id','name']]
+        skill_names_and_ids = skill_id_df[['id','name','parent']]
         skill_names_and_ids = skill_names_and_ids.sort_values(by='id')
         skill_names_and_ids.reset_index(inplace=True)
 

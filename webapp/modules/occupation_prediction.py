@@ -64,8 +64,6 @@ class PredictiveModels:
         pivot = df.pivot_table(index='cip', columns='skill', values='value')
         pivot = pivot.reset_index()
 
-        # todo: use all skills - first five for testing
-        #X = pivot[['2.A.1.a', '2.A.1.b', '2.A.1.c', '2.A.1.d', '2.A.1.e']]
         X = pivot.drop('cip', axis=1)  # feature matrix
         y = pivot.cip  # response
 

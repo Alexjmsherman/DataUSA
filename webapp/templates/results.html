@@ -44,11 +44,11 @@
             height:600px;
         }
         .left{
-            width:50%;
+            width:45%;
             display:table-cell;
         }
         .right{
-            width:50%;
+            width:55%;
             display:table-cell;
         }
 
@@ -82,6 +82,7 @@
 
     <div id="parent">
         <div class="left" id="res1left"><h5>Top College Major Recommendations</h5></div>
+        <br>
         <div class="right" id="res1right">Your Skills</div>
     </div>
     <br><br><br>
@@ -107,8 +108,7 @@
 
 <script>
 
-var data_job = JSON.parse('{{ vals|safe }}' );
-
+var data_job = JSON.parse('{{ predictions|safe }}' );
 var data_skill = JSON.parse('{{ skills_data|safe }}' );
 
 function datafold(json) {
@@ -147,7 +147,7 @@ function update_plot(data) {
     return null
 }
 
-d3.select("#top_job").html(data_job[0].name_long);
+d3.select("#top_job").html(data_job[0].college_major);
 d3.select("#iframe_dusa").attr("src", "http://datausa.io/profile/cip/".concat(data_job[0].cip));
 update_plot(data_job);
 
