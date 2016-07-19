@@ -93,6 +93,7 @@ class Survey(Form):
     submit = SubmitField('Submit')
 
 
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/index/', methods=['GET', 'POST'])
 def index():
     form = Survey()
@@ -176,7 +177,7 @@ def index():
             return render_template('results.html', result=result, predictions=json.dumps(predictions),
                                    skills_data=json.dumps(skills_data))
 
-    return render_template('index.html', form=form, skill_names=names_and_ids.skill_names_and_ids['parent'])
+    return render_template('index_test.html', form=form, skill_names=names_and_ids.skill_names_and_ids['parent'])
 
 
 if __name__ == "__main__":
