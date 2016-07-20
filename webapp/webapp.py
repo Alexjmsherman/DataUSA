@@ -157,7 +157,6 @@ def index():
                          'user_input': skill_pred}
                 skills_data.append(skill)
 
-            # todo: run a query to get skills for the top job
             # request skills data on the top matching job
             r = requests.get(r'http://api.datausa.io/api/?show=skill&sumlevel=all&cip={}'.format(predictions[0]['cip']))
             data_usa = r.json()

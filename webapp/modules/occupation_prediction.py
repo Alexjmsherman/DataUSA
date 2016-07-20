@@ -67,7 +67,7 @@ class PredictiveModels:
         X = pivot.drop('cip', axis=1)  # feature matrix
         y = pivot.cip  # response
 
-        knn = KNeighborsClassifier(n_neighbors=20)
+        knn = KNeighborsClassifier(n_neighbors=10)
         knn.fit(X, y)
 
         return knn
