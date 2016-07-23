@@ -90,8 +90,6 @@ class Survey(Form):
     q34 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][34], default=0,
                             validators=[NumberRange(min=0, max=5)])
 
-    submit = SubmitField('Submit')
-
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index/', methods=['GET', 'POST'])

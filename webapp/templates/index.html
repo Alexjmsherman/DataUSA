@@ -93,7 +93,7 @@
               </tr>
 
               {% for name in form %}
-              {% if loop.index == 1 or loop.index == 37 %}
+              {% if loop.index == 1 %}
               {% else %}
               <tr>
                 {% if skill_names[loop.index-2] != skill_names[loop.index-3] %}<td>{{skill_names[loop.index-2]}}</td>{% else %}<td></td>{% endif %}
@@ -106,7 +106,9 @@
               {% endfor %}
             </table>
               <br>
-              {{ form.submit }}
+              <div style="text-align:center">
+              <input type="submit" value="Submit" style="height:50px; width:300px; font-size:35px; color:blue">
+              </div>
             </form>
           </div>
         </div>
