@@ -19,76 +19,76 @@ occupation_prediction = PredictiveModels(names_and_ids)
 
 class Survey(Form):
     """ Survey questions including all skills for a user to provide personal ratings  """
-    q0 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][0], default=1,
-                           validators=[NumberRange(min=1, max=5)])
-    q1 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][1], default=1,
-                           validators=[NumberRange(min=1, max=5)])
-    q2 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][2], default=1,
-                           validators=[NumberRange(min=1, max=5)])
-    q3 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][3], default=1,
-                           validators=[NumberRange(min=1, max=5)])
-    q4 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][4], default=1,
-                           validators=[NumberRange(min=1, max=5)])
-    q5 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][5], default=1,
-                           validators=[NumberRange(min=1, max=5)])
-    q6 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][6], default=1,
-                           validators=[NumberRange(min=1, max=5)])
-    q7 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][7], default=1,
-                           validators=[NumberRange(min=1, max=5)])
-    q8 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][8], default=1,
-                           validators=[NumberRange(min=1, max=5)])
-    q9 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][9], default=1,
-                           validators=[NumberRange(min=1, max=5)])
-    q10 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][10], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q11 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][11], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q12 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][12], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q13 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][13], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q14 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][14], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q15 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][15], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q16 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][16], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q17 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][17], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q18 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][18], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q19 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][19], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q20 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][20], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q21 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][21], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q22 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][22], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q23 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][23], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q24 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][24], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q25 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][25], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q26 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][26], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q27 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][27], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q28 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][28], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q29 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][29], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q30 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][30], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q31 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][31], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q32 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][32], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q33 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][33], default=1,
-                            validators=[NumberRange(min=1, max=5)])
-    q34 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][34], default=1,
-                            validators=[NumberRange(min=1, max=5)])
+    q0 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][0], default=0,
+                           validators=[NumberRange(min=0, max=5)])
+    q1 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][1], default=0,
+                           validators=[NumberRange(min=0, max=5)])
+    q2 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][2], default=0,
+                           validators=[NumberRange(min=0, max=5)])
+    q3 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][3], default=0,
+                           validators=[NumberRange(min=0, max=5)])
+    q4 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][4], default=0,
+                           validators=[NumberRange(min=0, max=5)])
+    q5 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][5], default=0,
+                           validators=[NumberRange(min=0, max=5)])
+    q6 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][6], default=0,
+                           validators=[NumberRange(min=0, max=5)])
+    q7 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][7], default=0,
+                           validators=[NumberRange(min=0, max=5)])
+    q8 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][8], default=0,
+                           validators=[NumberRange(min=0, max=5)])
+    q9 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][9], default=0,
+                           validators=[NumberRange(min=0, max=5)])
+    q10 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][10], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q11 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][11], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q12 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][12], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q13 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][13], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q14 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][14], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q15 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][15], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q16 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][16], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q17 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][17], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q18 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][18], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q19 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][19], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q20 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][20], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q21 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][21], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q22 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][22], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q23 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][23], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q24 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][24], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q25 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][25], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q26 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][26], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q27 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][27], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q28 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][28], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q29 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][29], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q30 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][30], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q31 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][31], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q32 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][32], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q33 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][33], default=0,
+                            validators=[NumberRange(min=0, max=5)])
+    q34 = IntegerRangeField(label=names_and_ids.skill_names_and_ids['name'][34], default=0,
+                            validators=[NumberRange(min=0, max=5)])
 
     submit = SubmitField('Submit')
 
@@ -176,7 +176,7 @@ def index():
             return render_template('results.html', result=result, predictions=json.dumps(predictions),
                                    skills_data=json.dumps(skills_data))
 
-    return render_template('index_test.html', form=form, skill_names=names_and_ids.skill_names_and_ids['parent'])
+    return render_template('index.html', form=form, skill_names=names_and_ids.skill_names_and_ids['parent'])
 
 
 if __name__ == "__main__":

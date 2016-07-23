@@ -23,8 +23,6 @@
 <html lang="en">
   <head>
     <title>Major Recommendation Tool</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.teal-red.min.css">
     <link rel="stylesheet" href="/static/css/md_styles.css">
 
@@ -58,7 +56,9 @@
     </style>
 
     <script>
-    function SliderUpdate(response, ind) {document.querySelector('#select-q'+ind).value = response;}
+    function SliderUpdate(response, ind) {
+      document.querySelector('#select-'+ind).value = response;
+      }
     </script>
 
   </head>
@@ -81,6 +81,7 @@
 
             <br>
 
+
             <form method='POST'>
               {{ form.hidden_tag() }}
 
@@ -88,183 +89,21 @@
               <tr>
                 <td><b>CATEGORY</b></td>
                 <td><b>SKILLS</b></td>
-                <td><font size="3" color="blue"><b>1</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>2</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>3</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>4</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>5</b></font></td>
+                <td><font size="4" color="blue"><b>0</b>&nbsp;&nbsp;&nbsp;<b>1</b>&nbsp;&nbsp;&nbsp;<b>2</b>&nbsp;&nbsp;&nbsp;<b>3</b>&nbsp;&nbsp;&nbsp;<b>4</b>&nbsp;&nbsp;&nbsp;<b>5</b></font></td>
               </tr>
+
+              {% for name in form %}
+              {% if loop.index == 1 or loop.index == 37 %}
+              {% else %}
               <tr>
-                <td>{{skill_names[0]}}</td>
-                <td>{{ form.q0.label }}</td>
-                <td>{{ form.q0(min=1, max=5, oninput="SliderUpdate(value,0)") }}&nbsp;&nbsp;&nbsp;<output id="select-q0">{{ form.q0.data }}</output></td>
+                {% if skill_names[loop.index-2] != skill_names[loop.index-3] %}<td>{{skill_names[loop.index-2]}}</td>{% else %}<td></td>{% endif %}
+                <td>{{ name.label }}</td>
+                <td>{{ name(min=0, max=5, oninput="SliderUpdate(value, name )") }}</td>
+                <td><output id="select-q{{loop.index-2}}">{{ name.data }}</output></td>
               </tr>
-              <tr>
-                {% if skill_names[1] != skill_names[0] %}<td>{{skill_names[1]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q1.label }}</td>
-                <td>{{ form.q1(min=1, max=5, oninput="SliderUpdate(value,1)") }}&nbsp;&nbsp;&nbsp;<output id="select-q1">{{ form.q1.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[2] != skill_names[1] %}<td>{{skill_names[2]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q2.label }}</td>
-                <td>{{ form.q2(min=1, max=5, oninput="SliderUpdate(value,2)") }}&nbsp;&nbsp;&nbsp;<output id="select-q2">{{ form.q2.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[3] != skill_names[2] %}<td>{{skill_names[3]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q3.label }}</td>
-                <td>{{ form.q3(min=1, max=5, oninput="SliderUpdate(value,3)") }}&nbsp;&nbsp;&nbsp;<output id="select-q3">{{ form.q3.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[4] != skill_names[3] %}<td>{{skill_names[4]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q4.label }}</td>
-                <td>{{ form.q4(min=1, max=5, oninput="SliderUpdate(value,4)") }}&nbsp;&nbsp;&nbsp;<output id="select-q4">{{ form.q4.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[5] != skill_names[4] %}<td>{{skill_names[5]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q5.label }}</td>
-                <td>{{ form.q5(min=1, max=5, oninput="SliderUpdate(value,5)") }}&nbsp;&nbsp;&nbsp;<output id="select-q5">{{ form.q5.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[6] != skill_names[5] %}<td>{{skill_names[6]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q6.label }}</td>
-                <td>{{ form.q6(min=1, max=5, oninput="SliderUpdate(value,6)") }}&nbsp;&nbsp;&nbsp;<output id="select-q6">{{ form.q6.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[7] != skill_names[6] %}<td>{{skill_names[7]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q7.label }}</td>
-                <td>{{ form.q7(min=1, max=5, oninput="SliderUpdate(value,7)") }}&nbsp;&nbsp;&nbsp;<output id="select-q7">{{ form.q7.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[8] != skill_names[7] %}<td>{{skill_names[8]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q8.label }}</td>
-                <td>{{ form.q8(min=1, max=5, oninput="SliderUpdate(value,8)") }}&nbsp;&nbsp;&nbsp;<output id="select-q8">{{ form.q8.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[9] != skill_names[8] %}<td>{{skill_names[9]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q9.label }}</td>
-                <td>{{ form.q9(min=1, max=5, oninput="SliderUpdate(value,9)") }}&nbsp;&nbsp;&nbsp;<output id="select-q9">{{ form.q9.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[10] != skill_names[9] %}<td>{{skill_names[10]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q10.label }}</td>
-                <td>{{ form.q10(min=1, max=5, oninput="SliderUpdate(value,10)") }}&nbsp;&nbsp;&nbsp;<output id="select-q10">{{ form.q10.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[11] != skill_names[10] %}<td>{{skill_names[11]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q11.label }}</td>
-                <td>{{ form.q11(min=1, max=5, oninput="SliderUpdate(value,11)") }}&nbsp;&nbsp;&nbsp;<output id="select-q11">{{ form.q11.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[12] != skill_names[11] %}<td>{{skill_names[12]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q12.label }}</td>
-                <td>{{ form.q12(min=1, max=5, oninput="SliderUpdate(value,12)") }}&nbsp;&nbsp;&nbsp;<output id="select-q12">{{ form.q12.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[13] != skill_names[12] %}<td>{{skill_names[13]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q13.label }}</td>
-                <td>{{ form.q13(min=1, max=5, oninput="SliderUpdate(value,13)") }}&nbsp;&nbsp;&nbsp;<output id="select-q13">{{ form.q13.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[14] != skill_names[13] %}<td>{{skill_names[14]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q14.label }}</td>
-                <td>{{ form.q14(min=1, max=5, oninput="SliderUpdate(value,14)") }}&nbsp;&nbsp;&nbsp;<output id="select-q14">{{ form.q14.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[15] != skill_names[14] %}<td>{{skill_names[15]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q15.label }}</td>
-                <td>{{ form.q15(min=1, max=5, oninput="SliderUpdate(value,15)") }}&nbsp;&nbsp;&nbsp;<output id="select-q15">{{ form.q15.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[16] != skill_names[15] %}<td>{{skill_names[16]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q16.label }}</td>
-                <td>{{ form.q16(min=1, max=5, oninput="SliderUpdate(value,16)") }}&nbsp;&nbsp;&nbsp;<output id="select-q16">{{ form.q16.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[17] != skill_names[16] %}<td>{{skill_names[17]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q17.label }}</td>
-                <td>{{ form.q17(min=1, max=5, oninput="SliderUpdate(value,17)") }}&nbsp;&nbsp;&nbsp;<output id="select-q17">{{ form.q17.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[18] != skill_names[17] %}<td>{{skill_names[18]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q18.label }}</td>
-                <td>{{ form.q18(min=1, max=5, oninput="SliderUpdate(value,18)") }}&nbsp;&nbsp;&nbsp;<output id="select-q18">{{ form.q18.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[19] != skill_names[18] %}<td>{{skill_names[19]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q19.label }}</td>
-                <td>{{ form.q19(min=1, max=5, oninput="SliderUpdate(value,19)") }}&nbsp;&nbsp;&nbsp;<output id="select-q19">{{ form.q19.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[20] != skill_names[19] %}<td>{{skill_names[20]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q20.label }}</td>
-                <td>{{ form.q20(min=1, max=5, oninput="SliderUpdate(value,20)") }}&nbsp;&nbsp;&nbsp;<output id="select-q20">{{ form.q20.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[21] != skill_names[20] %}<td>{{skill_names[21]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q21.label }}</td>
-                <td>{{ form.q21(min=1, max=5, oninput="SliderUpdate(value,21)") }}&nbsp;&nbsp;&nbsp;<output id="select-q21">{{ form.q21.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[22] != skill_names[21] %}<td>{{skill_names[22]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q22.label }}</td>
-                <td>{{ form.q22(min=1, max=5, oninput="SliderUpdate(value,22)") }}&nbsp;&nbsp;&nbsp;<output id="select-q22">{{ form.q22.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[23] != skill_names[22] %}<td>{{skill_names[23]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q23.label }}</td>
-                <td>{{ form.q23(min=1, max=5, oninput="SliderUpdate(value,23)") }}&nbsp;&nbsp;&nbsp;<output id="select-q23">{{ form.q23.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[24] != skill_names[23] %}<td>{{skill_names[24]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q24.label }}</td>
-                <td>{{ form.q24(min=1, max=5, oninput="SliderUpdate(value,24)") }}&nbsp;&nbsp;&nbsp;<output id="select-q24">{{ form.q24.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[25] != skill_names[24] %}<td>{{skill_names[25]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q25.label }}</td>
-                <td>{{ form.q25(min=1, max=5, oninput="SliderUpdate(value,25)") }}&nbsp;&nbsp;&nbsp;<output id="select-q25">{{ form.q25.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[26] != skill_names[25] %}<td>{{skill_names[26]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q26.label }}</td>
-                <td>{{ form.q26(min=1, max=5, oninput="SliderUpdate(value,26)") }}&nbsp;&nbsp;&nbsp;<output id="select-q26">{{ form.q26.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[27] != skill_names[26] %}<td>{{skill_names[27]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q27.label }}</td>
-                <td>{{ form.q27(min=1, max=5, oninput="SliderUpdate(value,27)") }}&nbsp;&nbsp;&nbsp;<output id="select-q27">{{ form.q27.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[28] != skill_names[27] %}<td>{{skill_names[28]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q28.label }}</td>
-                <td>{{ form.q28(min=1, max=5, oninput="SliderUpdate(value,28)") }}&nbsp;&nbsp;&nbsp;<output id="select-q28">{{ form.q28.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[29] != skill_names[28] %}<td>{{skill_names[29]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q29.label }}</td>
-                <td>{{ form.q29(min=1, max=5, oninput="SliderUpdate(value,29)") }}&nbsp;&nbsp;&nbsp;<output id="select-q29">{{ form.q29.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[30] != skill_names[29] %}<td>{{skill_names[30]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q30.label }}</td>
-                <td>{{ form.q30(min=1, max=5, oninput="SliderUpdate(value,30)") }}&nbsp;&nbsp;&nbsp;<output id="select-q30">{{ form.q30.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[31] != skill_names[30] %}<td>{{skill_names[31]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q31.label }}</td>
-                <td>{{ form.q31(min=1, max=5, oninput="SliderUpdate(value,31)") }}&nbsp;&nbsp;&nbsp;<output id="select-q31">{{ form.q31.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[32] != skill_names[31] %}<td>{{skill_names[32]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q32.label }}</td>
-                <td>{{ form.q32(min=1, max=5, oninput="SliderUpdate(value,32)") }}&nbsp;&nbsp;&nbsp;<output id="select-q32">{{ form.q32.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[33] != skill_names[32] %}<td>{{skill_names[33]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q33.label }}</td>
-                <td>{{ form.q33(min=1, max=5, oninput="SliderUpdate(value,33)") }}&nbsp;&nbsp;&nbsp;<output id="select-q33">{{ form.q33.data }}</output></td>
-              </tr>
-              <tr>
-                {% if skill_names[34] != skill_names[33] %}<td>{{skill_names[34]}}</td>{% else %}<td></td>{% endif %}
-                <td>{{ form.q34.label }}</td>
-                <td>{{ form.q34(min=1, max=5, oninput="SliderUpdate(value,34)") }}&nbsp;&nbsp;&nbsp;<output id="select-q34">{{ form.q34.data }}</output></td>
-              </tr>
+
+              {% endif %}
+              {% endfor %}
             </table>
               <br>
               {{ form.submit }}

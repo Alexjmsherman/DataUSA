@@ -30,7 +30,6 @@ class PredictiveModels:
 
         :return: a dataframe of cips, college majors, and probabilities sorted acsending by  top probability matches
         """
-
         pred = self.model.predict_proba([prediction])
 
         career_ids = self.cip_names_and_ids['id']
@@ -67,14 +66,16 @@ class PredictiveModels:
         X = pivot.drop('cip', axis=1)  # feature matrix
         y = pivot.cip  # response
 
-        knn = KNeighborsClassifier(n_neighbors=10)
+        knn = KNeighborsClassifier(n_neighbors=10, weights='distance')
         knn.fit(X, y)
 
         return knn
 
-
 if __name__ == "__main__":
     names_and_ids = DataUsaNamesAndIds()
     p = PredictiveModels(names_and_ids)
-    g = [1. for i in range(0, len(p.skill_names_and_ids))]
+    g = [4, 3, 5, 5, 3, 2, 3, 3, 4, 2, 2, 3, 1, 3, 5, 1, 3, 2, 4, 1, 1, 5, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 5, 2, 2]
+    # g = [5. for i in range(0, len(p.skill_names_and_ids))]
     p.predict(g)
+
+
