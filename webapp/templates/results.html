@@ -133,9 +133,9 @@ function update_plot(data) {
             .mouse({click: function(obj) {
                 var cURL = "http://datausa.io/profile/cip/".concat(obj.cip)
                 if(obj.cip == data[0].cip) {
-                    d3.select("#top_job").html(obj.name_long);
+                    d3.select("#top_job").html(obj.college_major);
                 } else {
-                    var toPrint = "(maybe) ".concat(obj.name_long)
+                    var toPrint = "(maybe) ".concat(obj.college_major)
                     d3.select("#top_job").html(toPrint);
                 }
 
@@ -156,7 +156,7 @@ var visualization = d3plus.viz()
 .container("#res1right")
 .data(data_skill)
 .id(["name", "skill"])
-.size("user_input")
+.size("score")
 .type("radar")
 .draw();
 

@@ -148,14 +148,8 @@ def index():
                 predictions.append(val)
 
             skills_data = []
-            for ind, skill_pred in enumerate(prediction_data):
-                skill = {'name': 'your skills',
-                         'skill': names_and_ids.skill_names_and_ids['name'][ind],
-                         'cip': names_and_ids.skill_names_and_ids['id'][ind],
-                         'user_input': skill_pred}
-                skills_data.append(skill)
 
-            # request skills data on the top matching job
+            # Request skills data on the top matching job
             r = requests.get(r'http://api.datausa.io/api/?show=skill&sumlevel=all&cip={}'.format(predictions[0]['cip']))
             data_usa = r.json()
             headers = data_usa['headers']
@@ -165,10 +159,18 @@ def index():
             print df.head()
 
             for ind, row in df.iterrows():
-                skill = {'name': 'job skills',
+                skill = {'name': 'Skills for Top Matching Job',
                          'skill': row['name'],
                          'cip': row['cip'],
-                         'user_input': row['value']}
+                         'score': row['value']}
+                skills_data.append(skill)
+
+            # User's skills
+            for ind, skill_pred in enumerate(prediction_data):
+                skill = {'name': 'Your Skills',
+                         'skill': names_and_ids.skill_names_and_ids['name'][ind],
+                         'cip': names_and_ids.skill_names_and_ids['id'][ind],
+                         'score': skill_pred}
                 skills_data.append(skill)
 
             return render_template('results.html', result=result, predictions=json.dumps(predictions),
