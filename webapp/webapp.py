@@ -7,8 +7,8 @@ from flask import Flask, request, render_template
 from flask_wtf import Form
 from wtforms.fields.html5 import IntegerRangeField
 from wtforms.validators import NumberRange
-from webapp.modules.occupation_prediction import PredictiveModels
-from webapp.modules.data_usa_names_and_ids import DataUsaNamesAndIds
+from modules.occupation_prediction import PredictiveModels
+from modules.data_usa_names_and_ids import DataUsaNamesAndIds
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret'
