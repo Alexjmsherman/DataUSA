@@ -17,7 +17,7 @@ Created using the DataUSA API during a DataUSA hackathon.
 Open up a terminal in Mac or git bash in Windows
 * **git clone the repo:** git clone "https://github.com/Alexjmsherman/DataUSA.git"
 
-* cd into the local DataUSA repo, you should see a file named requirements.txt
+* cd into the local DataUSA repo. You should see a file named requirements.txt
 
 * **Install all the required Python packages:** pip install -r requirements.txt
 
@@ -27,4 +27,4 @@ Open up a terminal in Mac or git bash in Windows
 
 * **Open up a web browser and go to localhost:5000**
 
-* **Enjoy!**
+**Enjoy!**
