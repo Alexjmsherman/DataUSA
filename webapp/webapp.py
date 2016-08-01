@@ -5,7 +5,6 @@ import pandas as pd
 import requests
 from flask import Flask, request, render_template
 from flask_wtf import Form
-from wtforms.fields import SubmitField
 from wtforms.fields.html5 import IntegerRangeField
 from wtforms.validators import NumberRange
 from modules.occupation_prediction import PredictiveModels
@@ -162,7 +161,6 @@ def index():
             data = data_usa['data']
             df = pd.DataFrame(data, columns=headers)
             df = pd.merge(df, names_and_ids.skill_names_and_ids, left_on='skill', right_on='id')
-            print df.head()
 
             for ind, row in df.iterrows():
                 skill = {'name': 'job skills',
@@ -175,6 +173,16 @@ def index():
                                    skills_data=json.dumps(skills_data))
 
     return render_template('index.html', form=form, skill_names=names_and_ids.skill_names_and_ids['parent'])
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('index.html'), 404
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
 
 
 if __name__ == "__main__":
