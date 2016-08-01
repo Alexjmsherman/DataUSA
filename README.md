@@ -25,3 +25,6 @@ Open up a terminal in Mac or git bash in Windows
 
 * **Run the webapp.py in Python:** python webapp.py
 
+* **Open up a web browser and go to localhost:5000**
+
+* **Enjoy!**
