@@ -177,14 +177,6 @@ def index():
     return render_template('index.html', form=form, skill_names=names_and_ids.skill_names_and_ids['parent'])
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('index.html'), 404
-
-
-@app.errorhandler(500)
-def internal_server_error(e):
-    return render_template('index.html'), 500
 
 
 if __name__ == "__main__":
