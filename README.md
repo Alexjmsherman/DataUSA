@@ -10,13 +10,13 @@ To run the app locally proceed with the following steps:
 Prerequisites: Python v2.7
 
 Open up a terminal in Mac or git bash in Windows
-* 1. git clone the repo - git clone "https://github.com/Alexjmsherman/DataUSA.git"
+* git clone the repo - git clone "https://github.com/Alexjmsherman/DataUSA.git"
 
-* 2. cd into the local DataUSA repo, you should see a file named requirements.txt
+* cd into the local DataUSA repo, you should see a file named requirements.txt
 
-* 3. Install all the required Python packages - pip install -r requirements.txt
+* Install all the required Python packages - pip install -r requirements.txt
 
-* 4. cd into webapps folder (inside DataUSA repo) - cd webapp
+* cd into webapps folder (inside DataUSA repo) - cd webapp
 
-* 5. Run the webapp.py in Python - python webapp.py
+* Run the webapp.py in Python - python webapp.py
 
