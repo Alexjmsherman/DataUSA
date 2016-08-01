@@ -5,9 +5,13 @@ Provides a detailed listing and visualizations on suggested college majors using
 Created using the DataUSA API during a DataUSA hackathon.
 
 
-To run the app locally proceed with the following steps:
 
-Prerequisites: Python v2.7
+
+**To run the app locally proceed with the following steps:**
+
+
+
+**Prerequisites: Python v2.7**
 
 Open up a terminal in Mac or git bash in Windows
 * git clone the repo - git clone "https://github.com/Alexjmsherman/DataUSA.git"
