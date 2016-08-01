@@ -6,6 +6,7 @@ Created using the DataUSA API during a DataUSA hackathon.
 
 
 
+---
 
 **To run the app locally proceed with the following steps:**
 
