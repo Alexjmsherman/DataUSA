@@ -1,4 +1,4 @@
-## Major Recommendation Tool
+## College Major Recommendation Tool
 
 Provides a detailed listing and visualizations on suggested college majors using a users self-selected ranking of their skills
 
